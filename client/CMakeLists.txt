@@ -39,6 +39,14 @@ else()
     client.cpp
     client.h
     client.ui
+    source/game.cpp
+    source/game.h
+    source/map.cpp
+    source/map.h
+    source/tile.cpp
+    source/tile.h
+    source/player.cpp
+    source/player.h
   )
 endif()
 
