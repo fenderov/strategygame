@@ -1,4 +1,0 @@
-#ifndef LANDSCAPETYPES_H
-#define LANDSCAPETYPES_H
-
-#endif
