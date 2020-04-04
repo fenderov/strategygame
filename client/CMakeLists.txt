@@ -47,6 +47,16 @@ else()
     source/tile.h
     source/player.cpp
     source/player.h
+    source/land.cpp
+    source/land.h
+    source/unit.cpp
+    source/unit.h
+    source/unitlist.cpp
+    source/unitlist.h
+    source/building.cpp
+    source/building.h
+    source/buildinglist.cpp
+    source/buildinglist.h
   )
 endif()
 
