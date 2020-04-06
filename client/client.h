@@ -2,7 +2,7 @@
 #define CLIENT_H
 
 #include <QMainWindow>
-#include "game.h"
+#include "source/game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Client; }

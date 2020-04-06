@@ -4,8 +4,11 @@
 #include "building.h"
 #include "unitlist.h"
 
-class Castle : Building {
-
+class Castle : private Building {
+public:
+    void NewBuildUnitOrder() override;
+private:
+    unsigned char _unitbuildingtimer;
 };
 
 class Barracks : Building {

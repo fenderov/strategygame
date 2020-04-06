@@ -7,10 +7,11 @@
 
 class Tile
 {
-private:
-    std::vector<Unit*> units;
 public:
     Tile();
+    void AddUnit(Unit*);
+private:
+    std::vector<Unit*> _units;
 };
 
 #endif // TILE_H
