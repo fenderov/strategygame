@@ -15,12 +15,13 @@ public:
     virtual void Destroy() = 0;
     virtual void Tick() = 0;
     unsigned char GetDefenceBonus() const;
-    bool Damage(unsigned char damage); //maybe void
+    bool PureDamage(unsigned char damage); //maybe void
     ~Building();
 protected:
     Tile& _tile;
     unsigned char _health;
     unsigned char _defencebonus;
+    unsigned char _attackbonus = 100;
 };
 
 #endif // BUILDING_H

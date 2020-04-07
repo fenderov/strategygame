@@ -7,6 +7,11 @@ class Unit
 {
 public:
     Unit();
+    unsigned int GetCombatPower();
+    void PureDamage(unsigned int damage);
+private:
+    int _power;
+    int _health;
 };
 
 template <typename T>

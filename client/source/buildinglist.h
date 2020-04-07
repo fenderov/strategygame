@@ -18,6 +18,7 @@ public:
 private:
     unsigned char _unitbuildingtimer;
     UnitType _unittype;
+    unsigned char _income;
 };
 
 class Barracks : Building {
@@ -26,12 +27,14 @@ public:
     void NewBuildUnitOrder() override;
 private:
     unsigned char _unitbuildingtimer;
+    UnitType _unittype;
 };
 
 class Mine : Building {
 public:
     void Tick() override;
 private:
+    unsigned char _income;
 };
 
 class Fort : Building {
