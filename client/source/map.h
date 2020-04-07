@@ -2,9 +2,12 @@
 #define MAP_H
 
 #include "tile.h"
+#include <QWidget>
+#include <QMainWindow>
 
-class Map
+class Map : QWidget
 {
+    Q_OBJECT
 public:
     Map();
 };

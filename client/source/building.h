@@ -2,9 +2,12 @@
 #define BUILDING_H
 
 #include "tile.h"
+#include <QMainWindow>
+#include <QObject>
 
-class Building
+class Building : QObject
 {
+    Q_OBJECT
 public:
     Building(Tile& tile);
     void GetMethods(); //??? const

@@ -2,11 +2,13 @@
 #define GAME_H
 
 #include "map.h"
+#include "client.h"
+#include <QMainWindow>
 
 class Game
 {
 public:
-    Game();
+    Game(Ui::Client* ui);
 };
 
 #endif // GAME_H

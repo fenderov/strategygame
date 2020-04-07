@@ -2,6 +2,7 @@
 #define UNITLIST_H
 
 #include "unit.h"
+#include <QMainWindow>
 
 class Archer : public Unit{
 

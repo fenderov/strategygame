@@ -1,6 +1,7 @@
 #ifndef UNIT_H
 #define UNIT_H
 
+#include <QMainWindow>
 
 class Unit
 {
@@ -9,8 +10,7 @@ public:
 };
 
 template <typename T>
-T* GetUnit() {
-    return new T;
-}
+
+T* CreateUnit();
 
 #endif // UNIT_H

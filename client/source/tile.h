@@ -4,6 +4,7 @@
 #include <vector>
 #include "building.h"
 #include "unitlist.h"
+#include <QMainWindow>
 
 class Tile
 {
