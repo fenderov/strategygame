@@ -8,7 +8,7 @@
 class Game
 {
 public:
-    Game(Ui::Client* ui);
+    Game();
 };
 
 #endif // GAME_H

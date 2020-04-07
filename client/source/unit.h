@@ -9,13 +9,10 @@ public:
     Unit();
     unsigned int GetCombatPower();
     void PureDamage(unsigned int damage);
-private:
-    int _power;
-    int _health;
+    static const unsigned char buildtime;
+protected:
+    unsigned char _power;
+    unsigned char _health;
 };
-
-template <typename T>
-
-T* CreateUnit();
 
 #endif // UNIT_H

@@ -13,10 +13,10 @@ public:
     Tile();
     void AddUnit(Unit*);
     void ProduceMoney(unsigned char income);
-    unsigned int GetBasePower();
     unsigned int GetAttackPower();
     unsigned int GetDefencePower();
 private:
+    unsigned int GetBasePower();
     std::vector<Unit*> _units;
     Building* _building;
     Player* _owner;

@@ -57,6 +57,8 @@ else()
     source/building.h
     source/buildinglist.cpp
     source/buildinglist.h
+    source/unitfactory.cpp
+    source/unitfactory.h
   )
 endif()
 

@@ -18,7 +18,7 @@ unsigned int Tile::GetBasePower(){
 }
 
 unsigned int Tile::GetAttackPower(){
-    int power = GetBasePower() * 100; //equal to 1x defence;
+    int power = GetBasePower();// * _building->GetAttackBonus() //equal to 1x defence;
     return power;
 }
 
