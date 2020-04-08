@@ -7,7 +7,7 @@ class UnitFactory
 {
 public:
     UnitFactory();
-    Unit* UnitCreationTick();
+    Unit* UnitCreationTick(Fractions customer);
     void UnitCreationOrder(UnitType type);
 private:
     unsigned char _unitbuildingtimer;

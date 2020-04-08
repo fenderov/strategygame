@@ -26,3 +26,10 @@ unsigned int Tile::GetDefencePower(){
     int power = GetBasePower() * _building->GetDefenceBonus();
     return power;
 }
+
+Player* Tile::getOwner(){
+    return _owner;
+}
+void Tile::setOwner(Player* newOwner){
+    _owner = newOwner;
+}

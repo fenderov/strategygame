@@ -1,10 +1,16 @@
 #include "player.h"
 
-Player::Player()
-{
+Player::Player() :
+    _score(0),
+    _money(0),
+    _fraction(FractionNull)
+{}
 
+void Player::CangeMoney(int value){
+    _money += value;
 }
 
-void Player::CangeMoney(char value){
-    _money += value;
+Fractions Player::getFraction()
+{
+    return _fraction;
 }

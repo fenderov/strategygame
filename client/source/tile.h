@@ -15,6 +15,8 @@ public:
     void ProduceMoney(unsigned char income);
     unsigned int GetAttackPower();
     unsigned int GetDefencePower();
+    Player* getOwner();
+    void setOwner(Player* newOwner);
 private:
     unsigned int GetBasePower();
     std::vector<Unit*> _units;

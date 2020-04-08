@@ -9,13 +9,13 @@ void Castle::NewBuildUnitOrder(){
 }
 
 void Castle::Tick(){
-    Unit* newunit = UnitCreationTick();
+    Unit* newunit = UnitCreationTick(_tile.getOwner()->getFraction());
     if(newunit != nullptr) _tile.AddUnit(newunit);
     _tile.ProduceMoney(_income);
 }
 
 void Barracks::Tick(){
-    Unit* newunit = UnitCreationTick();
+    Unit* newunit = UnitCreationTick(_tile.getOwner()->getFraction());
     if(newunit != nullptr) _tile.AddUnit(newunit);
 }
 

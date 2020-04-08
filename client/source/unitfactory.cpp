@@ -5,17 +5,17 @@ UnitFactory::UnitFactory()
 
 }
 
-Unit* UnitFactory::UnitCreationTick(){
+Unit* UnitFactory::UnitCreationTick(Fractions customer){
     if(_unitbuildingtimer > 0) _unitbuildingtimer--;
     if(_unitbuildingtimer == 0){
         switch(_unittype){
         case UnitType::ArcherType:
-            return new Archer;
+            return new Archer(customer);
         case UnitType::SwordsmanType:
-            return new Swordsman;
+            return new Swordsman(customer);
         case UnitType::HorsemanType:
-            return new Horseman;
-        case _void:
+            return new Horseman(customer);
+        case UnitType::UnitTypeNull:
             return nullptr;
         }
     }
@@ -31,7 +31,7 @@ void UnitFactory::UnitCreationOrder(UnitType type){
         _unitbuildingtimer = Swordsman::buildtime;
     case UnitType::HorsemanType:
         _unitbuildingtimer = Horseman::buildtime;
-    case _void:
+    case UnitType::UnitTypeNull:
         _unitbuildingtimer = 0;
     }
 }
