@@ -7,6 +7,7 @@ class Land
 {
 public:
     Land();
+
 };
 
 #endif // LAND_H
