@@ -1,6 +1,6 @@
 #include "buildinglist.h"
-
-Castle::Castle(Tile& tile) : Building(tile){
+/*
+Castle::Castle() : Building(){
 
 }
 
@@ -8,7 +8,7 @@ void Castle::NewBuildUnitOrder(){
     //_tile.AddUnit(CreateUnit<Archer>());
 }
 
-void Castle::Tick(){
+void Castle::Tick(){/
     Unit* newunit = UnitCreationTick(_tile.getOwner()->getFraction());
     if(newunit != nullptr) _tile.AddUnit(newunit);
     _tile.ProduceMoney(_income);
@@ -25,4 +25,4 @@ void Mine::Tick(){
 
 void Fort::Tick(){
     //and it still stand...
-}
+}*/

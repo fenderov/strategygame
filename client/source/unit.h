@@ -2,16 +2,16 @@
 #define UNIT_H
 
 #include <QMainWindow>
-#include "game.h"
+#include "player.h"
 
 class Unit
 {
 public:
-    Unit(Fractions customer, unsigned char power, unsigned char actionPoint);
+    Unit(FractionType customer, unsigned char power, unsigned char actionPoint);
     unsigned int GetCombatPower() const;
     void PureDamage(unsigned int damage);
     void Health();
-    const Fractions owner;
+    const FractionType owner;
 protected:
     unsigned char _power;
     unsigned char _actionPoints;

@@ -3,14 +3,17 @@
 
 #include "tile.h"
 #include <QWidget>
-#include <QMainWindow>
+#include "QStyleOption"
+#include "QPainter"
 
-class Map : QWidget
+class Map : public QWidget
 {
     Q_OBJECT
 public:
-    Map();
+    explicit Map(QWidget *parent = nullptr);
     void Combat(Tile* attacking, Tile* defending);
+protected:
+    void paintEvent(QPaintEvent *);
 
 };
 

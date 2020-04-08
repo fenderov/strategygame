@@ -2,20 +2,18 @@
 #define GAME_H
 
 #include "QWidget"
-#include "client.h"
+#include "QStyleOption"
+#include "QPainter"
+//#include "map.h"
+//#include "actionfield.h"
 
 class Game: public QWidget
 {
     Q_OBJECT
-
 public:
-    Game();
-};
-
-enum Fractions {
-    FractionNull = 0,
-    FractionA = 1,
-    FractionB = 2
+    explicit Game(QWidget *parent = nullptr);
+protected:
+    void paintEvent(QPaintEvent *);
 };
 
 #endif // GAME_H

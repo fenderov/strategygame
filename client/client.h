@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QMainWindow>
+#include <QResizeEvent>
 #include "source/game.h"
 
 QT_BEGIN_NAMESPACE
@@ -15,6 +16,7 @@ class Client : public QMainWindow
 public:
     Client(QWidget *parent = nullptr);
     ~Client();
+    virtual void resizeEvent(QResizeEvent *event) override;
 
 private:
     Ui::Client *ui;

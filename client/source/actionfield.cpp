@@ -1,11 +1,11 @@
-#include "game.h"
+#include "actionfield.h"
 
-Game::Game(QWidget *parent) : QWidget(parent)
+ActionField::ActionField(QWidget *parent) : QWidget(parent)
 {
 
 }
 
-void Game::paintEvent(QPaintEvent*) {
+void ActionField::paintEvent(QPaintEvent*) {
     QStyleOption opt;
     opt.init(this);
     QPainter p(this);

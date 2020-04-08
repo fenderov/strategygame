@@ -1,6 +1,6 @@
 #include "building.h"
 
-Building::Building(Tile& tile): _tile(tile){
+Building::Building(){
 
 }
 

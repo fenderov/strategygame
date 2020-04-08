@@ -7,18 +7,18 @@
 
 class Castle : Building, UnitFactory {
 public:
-    Castle(Tile& tile);
+    Castle();
     void Tick() override;
-    void NewBuildUnitOrder() override;
+    //void NewBuildUnitOrder() override;
 private:
     unsigned char _income;
 };
 
 class Barracks : Building, UnitFactory {
 public:
-    Barracks(Tile& tile);
+    Barracks();
     void Tick() override;
-    void NewBuildUnitOrder() override;
+    //void NewBuildUnitOrder() override;
 private:
     unsigned char _unitbuildingtimer;
     UnitType _unittype;

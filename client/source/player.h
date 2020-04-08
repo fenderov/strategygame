@@ -1,19 +1,18 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QMainWindow>
-#include "game.h"
+#include "fraction.h"
 
 class Player
 {
 public:
     Player();
     void CangeMoney(int value);
-    Fractions getFraction();
+    FractionType getFraction();
 private:
     unsigned int _score;
     unsigned int _money;
-    Fractions _fraction;
+    FractionType _fraction;
 };
 
 #endif // PLAYER_H

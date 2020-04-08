@@ -5,7 +5,7 @@ UnitFactory::UnitFactory()
 
 }
 
-Unit* UnitFactory::UnitCreationTick(Fractions customer){
+Unit* UnitFactory::UnitCreationTick(FractionType customer){
     if(_unitbuildingtimer > 0) _unitbuildingtimer--;
     if(_unitbuildingtimer == 0){
         switch(_unittype){

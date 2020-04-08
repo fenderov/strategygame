@@ -1,6 +1,6 @@
 #include "unit.h"
 
-Unit::Unit(Fractions customer, unsigned char power, unsigned char actionPoint) :
+Unit::Unit(FractionType customer, unsigned char power, unsigned char actionPoint) :
     owner(customer),
     _power(power),
     _actionPoints(actionPoint) {}
