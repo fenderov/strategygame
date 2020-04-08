@@ -2,36 +2,34 @@
 #define BUILDINGLIST_H
 
 #include "building.h"
-#include "unitlist.h"
+#include "unitfactory.h"
 #include <QMainWindow>
 
-enum UnitType {
-    ArcherType,
-    SwordsmanType,
-    HorsemanType
+class Castle : Building, UnitFactory {
+public:
+    Castle(Tile& tile);
+    void Tick() override;
+    void NewBuildUnitOrder() override;
+private:
+    unsigned char _income;
 };
 
-class Castle : private Building {
+class Barracks : Building, UnitFactory {
 public:
+    Barracks(Tile& tile);
     void Tick() override;
     void NewBuildUnitOrder() override;
 private:
     unsigned char _unitbuildingtimer;
     UnitType _unittype;
-};
-
-class Barracks : Building {
-public:
-    void Tick() override;
-    void NewBuildUnitOrder() override;
-private:
-    unsigned char _unitbuildingtimer;
+    UnitFactory* _factory;
 };
 
 class Mine : Building {
 public:
     void Tick() override;
 private:
+    unsigned char _income;
 };
 
 class Fort : Building {

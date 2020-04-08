@@ -5,8 +5,10 @@ Unit::Unit()
 
 }
 
-template <typename T>
+void Unit::PureDamage(unsigned int damage){
+    _health-=damage;
+}
 
-T* CreateUnit() {
-    return new T;
+unsigned int Unit::GetCombatPower(){
+    return _power*_health;
 }

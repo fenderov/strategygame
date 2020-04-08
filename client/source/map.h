@@ -10,6 +10,7 @@ class Map : QWidget
     Q_OBJECT
 public:
     Map();
+    void Combat(Tile* attacking, Tile* defending);
 };
 
 #endif // MAP_H
