@@ -1,14 +1,14 @@
 #include "unit.h"
 
-Unit::Unit()
-{
-
-}
+Unit::Unit(Fractions customer, unsigned char power, unsigned char actionPoint) :
+    owner(customer),
+    _power(power),
+    _actionPoints(actionPoint) {}
 
 void Unit::PureDamage(unsigned int damage){
-    _health-=damage;
+    _power-=damage;
 }
 
-unsigned int Unit::GetCombatPower(){
-    return _power*_health;
+unsigned int Unit::GetCombatPower() const{
+    return _power;
 }

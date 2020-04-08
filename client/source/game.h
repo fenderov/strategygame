@@ -2,7 +2,6 @@
 #define GAME_H
 
 #include "QWidget"
-#include "map.h"
 #include "client.h"
 
 class Game: public QWidget
@@ -11,6 +10,12 @@ class Game: public QWidget
 
 public:
     Game();
+};
+
+enum Fractions {
+    FractionNull = 0,
+    FractionA = 1,
+    FractionB = 2
 };
 
 #endif // GAME_H

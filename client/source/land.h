@@ -3,12 +3,11 @@
 
 #include <QMainWindow>
 
-class Land
-{
-public:
-    Land();
-    void uselessmethod();
-    void uselessmethod2();
+struct Land{
+    Land(std::string name, unsigned char defenceBonus, unsigned char attackBonus);
+    const std::string name;
+    const unsigned char defenceBonus;
+    const unsigned char attackBonus;
 };
 
 #endif // LAND_H

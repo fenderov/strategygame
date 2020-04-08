@@ -17,6 +17,7 @@ public:
     unsigned char GetDefenceBonus() const;
     bool PureDamage(unsigned char damage); //maybe void
     ~Building();
+
 protected:
     Tile& _tile;
     unsigned char _health;
