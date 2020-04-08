@@ -1,12 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "QWidget"
 #include "map.h"
 #include "client.h"
-#include <QMainWindow>
 
-class Game
+class Game: public QWidget
 {
+    Q_OBJECT
+
 public:
     Game();
 };
