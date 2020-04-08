@@ -7,6 +7,7 @@ class Land
 {
 public:
     Land();
+    void uselessmethod();
 };
 
 #endif // LAND_H
