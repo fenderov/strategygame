@@ -1179,174 +1179,6 @@
                                 </instance>
                                </item>
                                <item>
-                                <instance type="DClass">
-                                 <DClass>
-                                  <base-DObject>
-                                   <DObject>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{ca73a7b6-e0fc-40be-8876-3ba518bb5be2}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{7b28182a-7fc6-45fb-856f-4385188ed71c}</object>
-                                    <name>QPushButton</name>
-                                    <pos>x:1990;y:125</pos>
-                                    <rect>x:-45;y:-30;w:90;h:60</rect>
-                                    <visual-role>0</visual-role>
-                                    <visual-role2>4</visual-role2>
-                                   </DObject>
-                                  </base-DObject>
-                                 </DClass>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{dc03e3b8-4e5a-43ba-98fc-337062f4b69a}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{e1cd883b-b653-4d14-8354-a646b2068821}</object>
-                                    <a>{ca73a7b6-e0fc-40be-8876-3ba518bb5be2}</a>
-                                    <b>{f05d430e-fdc9-43bf-babb-7117cb986390}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DClass">
-                                 <DClass>
-                                  <base-DObject>
-                                   <DObject>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{3e70eca8-78f1-4822-8080-a195f63ef577}</object>
-                                    <name>QWidget</name>
-                                    <pos>x:1380;y:90</pos>
-                                    <rect>x:-40;y:-30;w:80;h:60</rect>
-                                    <visual-role>0</visual-role>
-                                    <visual-role2>4</visual-role2>
-                                   </DObject>
-                                  </base-DObject>
-                                 </DClass>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{a33fbbeb-3bf7-4103-bfcd-7f6f91b59d4d}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{21e8b8e3-f0e9-4823-8a2a-b3d970661e59}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{7020e4f7-3e5d-4616-b835-a68b57bf85ac}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{1544d7b7-b95c-4c51-b9b5-074d8296ed49}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{81811be7-9c06-4787-a0a1-413884b7e0ca}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{b7476cbf-f232-4885-90ae-0744d9e09496}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{10d082c2-db4d-47d6-99f1-74e132c3252f}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{9c787c7f-bb51-4c2d-98d9-8fc577036f20}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{0569660b-b18a-44eb-b60f-6219582d0f7e}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{73e748c1-46ea-4fae-a9aa-a76e8e13ae0b}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{77744839-5699-4444-99a1-6c0a0e1e6bea}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{f227b306-9f03-4a5b-b086-9d5988ee1092}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{c3d9a842-0292-47db-a940-7e93be3b0929}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{e3193f28-13be-4585-93fd-0767eaa4dc5d}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{3af5072b-6b73-4090-b5fd-1f2bac00eec4}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
-                                <instance type="DInheritance">
-                                 <DInheritance>
-                                  <base-DRelation>
-                                   <DRelation>
-                                    <base-DElement>
-                                     <DElement>
-                                      <uid>{cc0300c7-150d-4e95-a5ba-1ed3ea72c3da}</uid>
-                                     </DElement>
-                                    </base-DElement>
-                                    <object>{74774c1b-bc49-4742-8a12-01d4bd89cc1a}</object>
-                                    <a>{aecbf73b-c9ea-43f0-b6e8-3fbaf0321e87}</a>
-                                    <b>{3d483546-208a-4570-a89d-c1c9deb2c680}</b>
-                                   </DRelation>
-                                  </base-DRelation>
-                                 </DInheritance>
-                                </instance>
-                               </item>
-                               <item>
                                 <instance type="DAssociation">
                                  <DAssociation>
                                   <base-DRelation>
@@ -1386,9 +1218,159 @@
                                  </DAnnotation>
                                 </instance>
                                </item>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{8509ebb2-105f-4ba8-9dea-56404be6c681}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</object>
+                                    <name>QWidget</name>
+                                    <pos>x:1130;y:145</pos>
+                                    <rect>x:-40;y:-30;w:80;h:60</rect>
+                                    <visual-role>0</visual-role>
+                                    <visual-role2>4</visual-role2>
+                                   </DObject>
+                                  </base-DObject>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{e4f26061-15da-490d-ba44-06d618047d37}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{cd2aad2b-8170-4bc2-8f1f-210ac22b29d2}</object>
+                                    <name>QPushButton</name>
+                                    <pos>x:1990;y:120</pos>
+                                    <rect>x:-45;y:-30;w:90;h:60</rect>
+                                    <visual-role>0</visual-role>
+                                    <visual-role2>4</visual-role2>
+                                   </DObject>
+                                  </base-DObject>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{254139a9-2bc5-4160-8d9f-c0911c4af2d3}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{4f62ac18-a5ab-4a49-aa69-71c5de02b372}</object>
+                                    <a>{f05d430e-fdc9-43bf-babb-7117cb986390}</a>
+                                    <b>{e4f26061-15da-490d-ba44-06d618047d37}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{2e19c9c7-eca3-4733-ad5d-e34307e6cb52}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{38094039-f375-4031-8fd5-73acacb2b834}</object>
+                                    <a>{0569660b-b18a-44eb-b60f-6219582d0f7e}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{45224be6-e8f4-4c45-8bd6-04210edf0a8e}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{e6ffb857-eebd-4fb1-be43-5faa47f77f34}</object>
+                                    <a>{b7476cbf-f232-4885-90ae-0744d9e09496}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{12ba6912-4964-457a-9458-4dbcfe6dca7b}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{af30bde2-338c-4d90-988e-0901c5f21e85}</object>
+                                    <a>{f227b306-9f03-4a5b-b086-9d5988ee1092}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{5abd22d2-b029-4408-87c3-a350a8e9b7cc}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{a8f969b7-5e19-46dc-b6ce-cb22ec1da9ff}</object>
+                                    <a>{3d483546-208a-4570-a89d-c1c9deb2c680}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{fabf0b28-98b6-4ac6-a025-fe1bb6d7cf99}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{3a0ce4eb-c7b7-4c5c-97c7-fb4405af5f9d}</object>
+                                    <a>{3af5072b-6b73-4090-b5fd-1f2bac00eec4}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
                               </qlist>
                              </elements>
-                             <last-modified>1586449923221</last-modified>
+                             <last-modified>1586450896845</last-modified>
                              <toolbarid>Classes</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -1431,13 +1413,43 @@
                                          </MElement>
                                         </base-MElement>
                                         <name>Building</name>
+                                        <relations>
+                                         <handles>
+                                          <handles>
+                                           <qlist>
+                                            <item>
+                                             <handle>
+                                              <uid>{3a0ce4eb-c7b7-4c5c-97c7-fb4405af5f9d}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{3a0ce4eb-c7b7-4c5c-97c7-fb4405af5f9d}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{836a7fa2-7a3d-4943-a77d-7e0b6e531990}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
+                                           </qlist>
+                                          </handles>
+                                         </handles>
+                                        </relations>
                                        </MObject>
                                       </base-MObject>
                                       <members>
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{5d1fcb2f-60b6-4bcc-a369-aacf53159921}</uid>
+                                          <uid>{5e80ad55-1236-4088-95a5-89d813c2ae26}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>explicit Building(QWidget *parent = nullptr)</declaration>
@@ -1445,7 +1457,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{c1da6109-95fe-43ea-bb18-78c225e8cab7}</uid>
+                                          <uid>{6d598642-fc92-40b9-9200-72abb13b1ca7}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>3</properties>
@@ -1454,7 +1466,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{6a31d658-62c0-48f5-9faa-f033fc45c48f}</uid>
+                                          <uid>{6ccdd874-458f-4b5e-84d3-f31be58ad186}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>3</properties>
@@ -1463,7 +1475,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{52531a62-e671-4694-a0c2-88eb0501742d}</uid>
+                                          <uid>{4bb2f8cb-8ec3-49c0-bebb-eb5b72c4b7df}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>3</properties>
@@ -1472,7 +1484,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{3e574e88-b1f5-4095-ba7f-aeec64f0d285}</uid>
+                                          <uid>{05b3ba2f-fe7b-4c77-ab5c-e7611146d0ae}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -1481,7 +1493,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{86de1601-9f2e-4893-9da9-8a2fcccd8510}</uid>
+                                          <uid>{09f2ce7b-421d-4620-9fa8-52c3a9bae97d}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -1490,7 +1502,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{0c11cadf-b7c4-45fd-9982-1e94ec999d06}</uid>
+                                          <uid>{37e40490-1af4-49fe-a9ec-4926d1bf25d4}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>bool PureDamage(unsigned char damage)</declaration>
@@ -1498,7 +1510,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{6d7961a0-09a9-4ebb-af18-397948cad0ae}</uid>
+                                          <uid>{518d3db5-9021-424b-9d4b-f60ed45c7f43}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>~Building()</declaration>
@@ -1506,7 +1518,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{091931d0-03ab-4ff4-89f0-d9c08056bcfb}</uid>
+                                          <uid>{fde2ff63-125c-4bcd-888c-cfb71d4a3e36}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>unsigned char _health</declaration>
@@ -1514,7 +1526,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{1e7314d1-117b-4706-8a8d-73a50eb50d76}</uid>
+                                          <uid>{58a278ed-d8a5-4374-82dc-7a585d8ed61e}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>unsigned char _defencebonus</declaration>
@@ -1522,7 +1534,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{3d0d087a-5d90-4516-a8e4-ca7c436f8f63}</uid>
+                                          <uid>{6d5aabcd-b126-41b5-8611-a5c707f67abf}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>unsigned char _attackbonus</declaration>
@@ -2557,6 +2569,28 @@
                                               </target>
                                              </handle>
                                             </item>
+                                            <item>
+                                             <handle>
+                                              <uid>{a8f969b7-5e19-46dc-b6ce-cb22ec1da9ff}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{a8f969b7-5e19-46dc-b6ce-cb22ec1da9ff}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{1138f43b-df10-4518-be65-26d057076c66}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
                                            </qlist>
                                           </handles>
                                          </handles>
@@ -2567,7 +2601,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{1b09a144-31b3-479a-9be7-cd5e0b24e884}</uid>
+                                          <uid>{484d4ef5-0587-4338-94da-16c0403f0474}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Unit(unsigned char power, unsigned char actionpoints)</declaration>
@@ -2575,7 +2609,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{9017a116-117b-492e-9449-9f4bc7ab76b3}</uid>
+                                          <uid>{1d191e44-ceb0-413b-9a48-33f631c61362}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -2584,7 +2618,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{13f89377-f722-4425-8285-e1011bf46662}</uid>
+                                          <uid>{a9f890cd-8107-4dd0-9496-f5ccfbac3033}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void PureDamage(unsigned int damage)</declaration>
@@ -2592,7 +2626,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{6d851bf0-b848-4b20-92a5-5298afa7243c}</uid>
+                                          <uid>{01447779-5d6f-4321-9213-12243382ccbb}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void Health()</declaration>
@@ -2600,7 +2634,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{aaece91a-dd75-468f-b08c-2a95dbe53612}</uid>
+                                          <uid>{6ea638b4-dfdf-4037-9dcc-c4f70d8e23fe}</uid>
                                           <visibility>1</visibility>
                                           <type>1</type>
                                           <properties>64</properties>
@@ -2609,7 +2643,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{844c5450-f1eb-4791-8f92-47b23d8c77b2}</uid>
+                                          <uid>{36ab7235-a2f4-4531-8b5b-ed0667790330}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>unsigned char _power</declaration>
@@ -2617,7 +2651,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{11e9b4a6-7d0e-4c2a-b887-d3c730d620fd}</uid>
+                                          <uid>{c69a6960-3741-4fa0-b39b-eb3a251d2c96}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>unsigned char _actionPoints</declaration>
@@ -2707,6 +2741,28 @@
                                               </target>
                                              </handle>
                                             </item>
+                                            <item>
+                                             <handle>
+                                              <uid>{38094039-f375-4031-8fd5-73acacb2b834}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{38094039-f375-4031-8fd5-73acacb2b834}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{672ada4f-5232-417b-8545-923b6a7989e9}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
                                            </qlist>
                                           </handles>
                                          </handles>
@@ -2717,7 +2773,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{47ba2bf2-4bdb-4d4b-8af1-9d130c438acc}</uid>
+                                          <uid>{0d933446-7955-4f06-881f-5c15b696dbc5}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>explicit Map(QWidget *parent = nullptr)</declaration>
@@ -2725,7 +2781,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{f9555848-6517-482c-8b94-8f5767320dfc}</uid>
+                                          <uid>{d364dbed-7581-4973-b20c-ec13d6137726}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void Combat(Tile* attacking, Tile* defending)</declaration>
@@ -2733,7 +2789,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{1a26a54d-e275-4863-bfc1-69ffbc0e41a2}</uid>
+                                          <uid>{ea6529a2-5189-4463-83a0-6328b9f42606}</uid>
                                           <visibility>2</visibility>
                                           <type>2</type>
                                           <properties>9</properties>
@@ -2742,7 +2798,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{14a7cbbd-6227-4c6d-9757-aec36c422b46}</uid>
+                                          <uid>{2cdf4d92-8255-4845-9d01-38986c0e929f}</uid>
                                           <visibility>2</visibility>
                                           <type>2</type>
                                           <properties>9</properties>
@@ -2942,6 +2998,28 @@
                                               </target>
                                              </handle>
                                             </item>
+                                            <item>
+                                             <handle>
+                                              <uid>{e6ffb857-eebd-4fb1-be43-5faa47f77f34}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{e6ffb857-eebd-4fb1-be43-5faa47f77f34}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{e1189168-f625-4b63-8c94-b2fc1e93f869}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
                                            </qlist>
                                           </handles>
                                          </handles>
@@ -2952,7 +3030,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{13871345-bb9c-46b1-925b-082b2c83f2b4}</uid>
+                                          <uid>{9d5cd63f-c5fa-4a7a-81cd-58b017bcbc3e}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Tile()</declaration>
@@ -2960,7 +3038,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{8df0cedd-b8bc-4ec7-96e7-ce6a006867e7}</uid>
+                                          <uid>{4e5eb58a-cfc1-47e5-abe6-d585795b8fd3}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void AddUnit(Unit*)</declaration>
@@ -2968,7 +3046,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{93e7585e-4995-4008-a9b9-6bcc877f5ff9}</uid>
+                                          <uid>{51f3fbb0-ee60-4c0d-a899-4c3f3ca32a47}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void ProduceMoney(unsigned char income)</declaration>
@@ -2976,7 +3054,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{9f837859-d941-41d4-945b-fad8aa8bfdf5}</uid>
+                                          <uid>{11454ee6-c700-4732-8ce1-09ff336bbfc5}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>unsigned int GetAttackPower()</declaration>
@@ -2984,7 +3062,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{666b7a3f-990e-44ac-ac0b-bc978b186838}</uid>
+                                          <uid>{8c564296-3e45-4025-8484-a530e649991b}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>unsigned int GetDefencePower()</declaration>
@@ -2992,7 +3070,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{8d91d7c6-c559-4365-9ac1-7dbf84f9c5ed}</uid>
+                                          <uid>{5eb6d6b7-218c-4fa3-83c1-97ab0b349659}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Player* getOwner()</declaration>
@@ -3000,7 +3078,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{1eb8dd3b-f4bf-4e72-9b83-a217d14d5dbc}</uid>
+                                          <uid>{b8ed004c-96f8-4090-996a-5a76ea4e0209}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void setOwner(Player* newOwner)</declaration>
@@ -3008,7 +3086,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{5f66c38c-b1a4-4184-93cd-e89de3e9896c}</uid>
+                                          <uid>{a834ef26-acba-4bb2-8635-32396f6cb0b1}</uid>
                                           <visibility>3</visibility>
                                           <type>2</type>
                                           <declaration>unsigned int GetBasePower()</declaration>
@@ -3016,7 +3094,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{44918092-1512-4cec-8cee-136962ef5e1f}</uid>
+                                          <uid>{d5787415-bc95-4a46-a80d-37117c290ecc}</uid>
                                           <visibility>3</visibility>
                                           <type>1</type>
                                           <declaration>std::vector&lt;Unit*&gt; _units</declaration>
@@ -3024,7 +3102,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{f5c58f34-631e-4a1e-ac41-a110b8b8d507}</uid>
+                                          <uid>{90b605cc-f272-46f6-b36e-4733afe36d8c}</uid>
                                           <visibility>3</visibility>
                                           <type>1</type>
                                           <declaration>Building* _building</declaration>
@@ -3032,7 +3110,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{887a3220-9652-4f73-bb0f-f1c9125be0cf}</uid>
+                                          <uid>{fd0a82a5-69da-4ccf-8d74-2fddeaef7c53}</uid>
                                           <visibility>3</visibility>
                                           <type>1</type>
                                           <declaration>Player* _owner</declaration>
@@ -3132,7 +3210,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{9817b5f3-00e6-444a-a336-c1b1ff1dfdf7}</uid>
+                                          <uid>{60ce1d25-ae10-4102-9de2-8c718be3cea7}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Army()</declaration>
@@ -3140,7 +3218,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{36672e7c-d1c4-4ddd-b948-0c196ffe854a}</uid>
+                                          <uid>{990d1c0b-6970-41d2-9fe6-2ad11e04e561}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void AddUnit(Unit* unit)</declaration>
@@ -3148,7 +3226,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{6e94bd47-c316-4ff4-9a1f-208e0bb3459d}</uid>
+                                          <uid>{d39b7918-b07b-4b08-9c6b-b398ffbbb7b8}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void BrowseActions(ActionField* actionfield)</declaration>
@@ -3156,7 +3234,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{4ad7af0a-9d2d-473b-8b20-044bccf327c5}</uid>
+                                          <uid>{b393b3c9-2c11-4d31-bbe5-5cc1624c0da6}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -3165,7 +3243,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{ba6d0098-1c76-4266-840b-207c3781a610}</uid>
+                                          <uid>{a79a09b6-6203-448a-b56d-4d5224fdce69}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -3200,7 +3278,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{32fd7518-a1a0-4cfd-acab-2de2d9035020}</uid>
+                                          <uid>{45810d4b-3f37-4603-9246-f8f793b8333c}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Land(std::string name, unsigned char defenceBonus, unsigned char attackBonus)</declaration>
@@ -3208,7 +3286,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{248bfe56-50df-4a91-b52e-38d7d20d67c0}</uid>
+                                          <uid>{647f309c-501f-4701-a95d-d4eafaefdd04}</uid>
                                           <visibility>1</visibility>
                                           <type>1</type>
                                           <declaration>const std::string name</declaration>
@@ -3216,7 +3294,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{e3c08d0d-580e-4485-a6d4-b98d4206c105}</uid>
+                                          <uid>{46a26d24-b32f-4108-833c-3a40226ce4e8}</uid>
                                           <visibility>1</visibility>
                                           <type>1</type>
                                           <declaration>const unsigned char defenceBonus</declaration>
@@ -3224,7 +3302,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{b59f10e8-8d8f-40af-8688-90a26541723e}</uid>
+                                          <uid>{cbdd35e7-2587-4485-b3c4-3c37a3986dcf}</uid>
                                           <visibility>1</visibility>
                                           <type>1</type>
                                           <declaration>const unsigned char attackBonus</declaration>
@@ -3417,6 +3495,28 @@
                                               </target>
                                              </handle>
                                             </item>
+                                            <item>
+                                             <handle>
+                                              <uid>{af30bde2-338c-4d90-988e-0901c5f21e85}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{af30bde2-338c-4d90-988e-0901c5f21e85}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{26975af3-6811-4b7d-8b42-b316ef2c21d1}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
                                            </qlist>
                                           </handles>
                                          </handles>
@@ -3427,7 +3527,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{b0ff9539-fd98-4eb8-8a39-376a37884227}</uid>
+                                          <uid>{78a76fab-af09-4371-93e8-404fcfd59680}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>explicit Game(QWidget *parent = nullptr)</declaration>
@@ -3435,7 +3535,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{c6aa3dbd-fc2a-4fae-a7e8-e24065ef22de}</uid>
+                                          <uid>{ae0fd4a1-5950-41d5-89fe-8f9619a048c4}</uid>
                                           <visibility>2</visibility>
                                           <type>2</type>
                                           <declaration>void paintEvent(QPaintEvent *)</declaration>
@@ -3732,13 +3832,43 @@
                                          </MElement>
                                         </base-MElement>
                                         <name>ActionButton</name>
+                                        <relations>
+                                         <handles>
+                                          <handles>
+                                           <qlist>
+                                            <item>
+                                             <handle>
+                                              <uid>{4f62ac18-a5ab-4a49-aa69-71c5de02b372}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{4f62ac18-a5ab-4a49-aa69-71c5de02b372}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{51664092-a9cd-4f62-8376-d638da6e30c2}</a>
+                                                   <b>{cd2aad2b-8170-4bc2-8f1f-210ac22b29d2}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
+                                           </qlist>
+                                          </handles>
+                                         </handles>
+                                        </relations>
                                        </MObject>
                                       </base-MObject>
                                       <members>
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{3fde9e9e-1c7f-45de-a296-550b2be17085}</uid>
+                                          <uid>{81cbb6de-73e0-4141-ab19-4d7aef03f8de}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>ActionButton()</declaration>
@@ -4059,7 +4189,7 @@
                       </item>
                       <item>
                        <handle>
-                        <uid>{3e70eca8-78f1-4822-8080-a195f63ef577}</uid>
+                        <uid>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</uid>
                         <target>
                          <instance type="MClass">
                           <MClass>
@@ -4067,150 +4197,31 @@
                             <MObject>
                              <base-MElement>
                               <MElement>
-                               <uid>{3e70eca8-78f1-4822-8080-a195f63ef577}</uid>
+                               <uid>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</uid>
                               </MElement>
                              </base-MElement>
                              <name>QWidget</name>
-                             <relations>
-                              <handles>
-                               <handles>
-                                <qlist>
-                                 <item>
-                                  <handle>
-                                   <uid>{21e8b8e3-f0e9-4823-8a2a-b3d970661e59}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{21e8b8e3-f0e9-4823-8a2a-b3d970661e59}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{00156dcd-2fc4-47e2-9ade-69cd5add9b5b}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                 <item>
-                                  <handle>
-                                   <uid>{81811be7-9c06-4787-a0a1-413884b7e0ca}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{81811be7-9c06-4787-a0a1-413884b7e0ca}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{e1189168-f625-4b63-8c94-b2fc1e93f869}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                 <item>
-                                  <handle>
-                                   <uid>{9c787c7f-bb51-4c2d-98d9-8fc577036f20}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{9c787c7f-bb51-4c2d-98d9-8fc577036f20}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{672ada4f-5232-417b-8545-923b6a7989e9}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                 <item>
-                                  <handle>
-                                   <uid>{77744839-5699-4444-99a1-6c0a0e1e6bea}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{77744839-5699-4444-99a1-6c0a0e1e6bea}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{26975af3-6811-4b7d-8b42-b316ef2c21d1}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                 <item>
-                                  <handle>
-                                   <uid>{e3193f28-13be-4585-93fd-0767eaa4dc5d}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{e3193f28-13be-4585-93fd-0767eaa4dc5d}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{836a7fa2-7a3d-4943-a77d-7e0b6e531990}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                 <item>
-                                  <handle>
-                                   <uid>{74774c1b-bc49-4742-8a12-01d4bd89cc1a}</uid>
-                                   <target>
-                                    <instance type="MInheritance">
-                                     <MInheritance>
-                                      <base-MRelation>
-                                       <MRelation>
-                                        <base-MElement>
-                                         <MElement>
-                                          <uid>{74774c1b-bc49-4742-8a12-01d4bd89cc1a}</uid>
-                                         </MElement>
-                                        </base-MElement>
-                                        <a>{3e70eca8-78f1-4822-8080-a195f63ef577}</a>
-                                        <b>{1138f43b-df10-4518-be65-26d057076c66}</b>
-                                       </MRelation>
-                                      </base-MRelation>
-                                     </MInheritance>
-                                    </instance>
-                                   </target>
-                                  </handle>
-                                 </item>
-                                </qlist>
-                               </handles>
-                              </handles>
-                             </relations>
+                            </MObject>
+                           </base-MObject>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{cd2aad2b-8170-4bc2-8f1f-210ac22b29d2}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{cd2aad2b-8170-4bc2-8f1f-210ac22b29d2}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <name>QPushButton</name>
                             </MObject>
                            </base-MObject>
                           </MClass>
