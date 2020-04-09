@@ -17,9 +17,9 @@ public:
     explicit Tile(QWidget *parent = nullptr);
     void AddUnit(Unit*);
     void ProduceMoney(unsigned char income);
-    unsigned int GetAttackPower();
-    unsigned int GetDefencePower();
-    Player* getOwner();
+    unsigned int GetAttackPower() const;
+    unsigned int GetDefencePower() const;
+    Player* getOwner() const;
     void setOwner(Player* newowner);
 public slots:
     void BrowseActions(ActionField* actionfield);
