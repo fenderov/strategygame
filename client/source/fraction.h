@@ -1,6 +1,8 @@
 #ifndef FRACTION_H
 #define FRACTION_H
 
+//now no use
+
 class Fraction
 {
 public:

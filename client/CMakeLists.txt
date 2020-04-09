@@ -11,30 +11,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
-# They need to be set before the find_package(Qt5 ...) call.
+find_package (Qt5Widgets)
 
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
+#find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
-
-if(ANDROID)
-  add_library(client SHARED
-    main.cpp
-    client.cpp
-    client.h
-    client.ui
-  )
-else()
-  add_executable(client
+add_executable(client
     main.cpp
     client.cpp
     client.h
@@ -69,7 +50,6 @@ else()
     source/actionbutton.h
     source/buildingfactory.cpp
     source/buildingfactory.h
-  )
-endif()
+)
 
 target_link_libraries(client PRIVATE Qt5::Widgets)

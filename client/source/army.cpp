@@ -5,10 +5,10 @@ Army::Army()
 
 }
 
-bool Army::Empty(){
+bool Army::Empty() const{
     return true;
 }
 
-unsigned int Army::GetPower(){
+unsigned int Army::GetPower() const{
     return 0;
 }

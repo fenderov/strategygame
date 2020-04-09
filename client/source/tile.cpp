@@ -46,17 +46,17 @@ void Tile::ProduceMoney(unsigned char income){
    _owner->CangeMoney(income);
 }
 
-unsigned int Tile::GetAttackPower(){
+unsigned int Tile::GetAttackPower() const{
     int power = _army->GetPower() * _building->GetAttackBonus();
     return power;
 }
 
-unsigned int Tile::GetDefencePower(){
+unsigned int Tile::GetDefencePower() const{
     int power = _army->GetPower() * _building->GetDefenceBonus();
     return power;
 }
 
-Player* Tile::getOwner(){
+Player* Tile::getOwner() const{
     return _owner;
 }
 void Tile::setOwner(Player* newOwner){

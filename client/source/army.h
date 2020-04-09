@@ -14,8 +14,8 @@ public:
     Army();
     void AddUnit(Unit* unit);
     void BrowseActions(ActionField* actionfield);
-    bool Empty();
-    unsigned int GetPower();
+    bool Empty() const;
+    unsigned int GetPower() const;
 };
 
 #endif // ARMY_H

@@ -17,7 +17,7 @@ public:
     virtual unsigned char GetProducedMoney() = 0;
     unsigned char GetDefenceBonus() const;
     unsigned char GetAttackBonus() const;
-    bool PureDamage(unsigned char damage); //maybe void
+    bool PureDamage(unsigned char damage);
     ~Building();
 
 protected:
