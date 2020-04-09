@@ -1368,9 +1368,27 @@
                                  </DInheritance>
                                 </instance>
                                </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{2d3fa2ec-6503-47df-83f7-6807ed6b4ca0}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{2426e685-3a20-480b-984e-fe8ff068e16f}</object>
+                                    <a>{7020e4f7-3e5d-4616-b835-a68b57bf85ac}</a>
+                                    <b>{8509ebb2-105f-4ba8-9dea-56404be6c681}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
                               </qlist>
                              </elements>
-                             <last-modified>1586450896845</last-modified>
+                             <last-modified>1586450998805</last-modified>
                              <toolbarid>Classes</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -3958,6 +3976,28 @@
                                               </target>
                                              </handle>
                                             </item>
+                                            <item>
+                                             <handle>
+                                              <uid>{2426e685-3a20-480b-984e-fe8ff068e16f}</uid>
+                                              <target>
+                                               <instance type="MInheritance">
+                                                <MInheritance>
+                                                 <base-MRelation>
+                                                  <MRelation>
+                                                   <base-MElement>
+                                                    <MElement>
+                                                     <uid>{2426e685-3a20-480b-984e-fe8ff068e16f}</uid>
+                                                    </MElement>
+                                                   </base-MElement>
+                                                   <a>{00156dcd-2fc4-47e2-9ade-69cd5add9b5b}</a>
+                                                   <b>{fddfca00-86c2-4121-b3d5-1b6aec348fb7}</b>
+                                                  </MRelation>
+                                                 </base-MRelation>
+                                                </MInheritance>
+                                               </instance>
+                                              </target>
+                                             </handle>
+                                            </item>
                                            </qlist>
                                           </handles>
                                          </handles>
@@ -3968,7 +4008,7 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{0edc5e89-4e50-4d32-8e95-3f9e1c5c75b3}</uid>
+                                          <uid>{a4398db0-7577-4980-a4da-c32b9a86022b}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>explicit ActionField(QWidget *parent = nullptr)</declaration>
@@ -3976,7 +4016,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{b59c23ca-68ef-48ab-932a-63767d976c23}</uid>
+                                          <uid>{ef8fc473-42af-45b6-b75c-16ddb6b9cd11}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void NewMenu()</declaration>
@@ -3984,7 +4024,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{eb00c85a-4b37-4db3-b05d-7b9616a472d2}</uid>
+                                          <uid>{6cc5f25d-f141-4594-946b-23676961e6dc}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>ActionButton* AddAction(QString name)</declaration>
@@ -3992,7 +4032,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{8ed99d21-a984-46ea-b0bc-ffd0a03ce1ae}</uid>
+                                          <uid>{3b6a3353-ae77-4eaa-a7fc-5443908edc80}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void Pop()</declaration>
@@ -4000,7 +4040,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{269f5561-8f78-4884-b01b-deff7105e3db}</uid>
+                                          <uid>{6855db94-a936-4eae-86ec-88bacaedee38}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void Purge()</declaration>
@@ -4008,7 +4048,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{bf4e677a-f834-4923-9683-52ef47491a46}</uid>
+                                          <uid>{7edc1d3b-aa3e-4d69-a818-0f7b5602c252}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void Refresh()</declaration>
@@ -4016,7 +4056,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{bd925a1b-609c-402c-a2bc-139fe869f4b2}</uid>
+                                          <uid>{7359faf3-1e87-4f65-a547-b3d1a88d53ae}</uid>
                                           <visibility>2</visibility>
                                           <type>2</type>
                                           <declaration>void paintEvent(QPaintEvent *)</declaration>
@@ -4024,7 +4064,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{b33e2907-76bf-4944-b0f7-7651e98e3ed8}</uid>
+                                          <uid>{db183c90-fda6-4499-b268-ab9c5501d4d9}</uid>
                                           <visibility>2</visibility>
                                           <type>1</type>
                                           <declaration>QVector&lt;QGridLayout*&gt; _actionmenus</declaration>
