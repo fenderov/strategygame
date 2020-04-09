@@ -65,6 +65,10 @@ else()
     source/army.h
     source/actionfield.cpp
     source/actionfield.h
+    source/actionbutton.cpp
+    source/actionbutton.h
+    source/buildingfactory.cpp
+    source/buildingfactory.h
   )
 endif()
 

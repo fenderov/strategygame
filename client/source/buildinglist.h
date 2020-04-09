@@ -3,38 +3,56 @@
 
 #include "building.h"
 #include "unitfactory.h"
-#include <QMainWindow>
+#include "actionfield.h"
 
-class Castle : Building, UnitFactory {
+#include <QWidget>
+
+enum BuildingType {
+    BuildingTypeNull = 0,
+    CastleType = 1,
+    BarracksType = 2,
+    MineType = 3,
+    FortType = 4
+};
+
+class Castle : public Building, UnitFactory {
+    Q_OBJECT
 public:
-    Castle();
-    void Tick() override;
-    //void NewBuildUnitOrder() override;
+    explicit Castle(QWidget *parent = nullptr);
+    Unit* GetProducedUnits() override;
+    unsigned char GetProducedMoney() override;
+    void BrowseActions(ActionField* actionfield) override;
 private:
     unsigned char _income;
 };
 
-class Barracks : Building, UnitFactory {
+class Barracks : public Building, UnitFactory {
+    Q_OBJECT
 public:
-    Barracks();
-    void Tick() override;
-    //void NewBuildUnitOrder() override;
-private:
-    unsigned char _unitbuildingtimer;
-    UnitType _unittype;
-    UnitFactory* _factory;
+    explicit Barracks(QWidget *parent = nullptr);
+    Unit* GetProducedUnits() override;
+    unsigned char GetProducedMoney() override;
+    void BrowseActions(ActionField* actionfield) override;
 };
 
-class Mine : Building {
+class Mine : public Building {
+    Q_OBJECT
 public:
-    void Tick() override;
+    explicit Mine(QWidget *parent = nullptr);
+    Unit* GetProducedUnits() override;
+    unsigned char GetProducedMoney() override;
+    void BrowseActions(ActionField* actionfield) override;
 private:
     unsigned char _income;
 };
 
-class Fort : Building {
+class Fort : public Building {
+    Q_OBJECT
 public:
-    void Tick() override;
+    explicit Fort(QWidget *parent = nullptr);
+    Unit* GetProducedUnits() override;
+    unsigned char GetProducedMoney() override;
+    void BrowseActions(ActionField* actionfield) override;
 private:
 };
 

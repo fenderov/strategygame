@@ -4,8 +4,8 @@
 #include "QWidget"
 #include "QStyleOption"
 #include "QPainter"
-//#include "map.h"
-//#include "actionfield.h"
+#include "map.h"
+#include "actionfield.h"
 
 class Game: public QWidget
 {

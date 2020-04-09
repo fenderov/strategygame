@@ -11,3 +11,19 @@ void ActionField::paintEvent(QPaintEvent*) {
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
+
+ActionButton* ActionField::AddAction(QString name){
+    ActionButton* action = new ActionButton;
+    action->setText(name);
+    _actionmenus.back()->addWidget(action);
+    return action;
+}
+
+void ActionField::NewMenu(){
+    _actionmenus.push_back(new QGridLayout);
+    //Кнопка "Назад".
+}
+
+void ActionField::Purge(){
+    _actionmenus.clear();
+}

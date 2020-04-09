@@ -5,16 +5,16 @@ UnitFactory::UnitFactory()
 
 }
 
-Unit* UnitFactory::UnitCreationTick(FractionType customer){
+Unit* UnitFactory::UnitCreationTick(){
     if(_unitbuildingtimer > 0) _unitbuildingtimer--;
     if(_unitbuildingtimer == 0){
         switch(_unittype){
         case UnitType::ArcherType:
-            return new Archer(customer);
+            return new Archer();
         case UnitType::SwordsmanType:
-            return new Swordsman(customer);
+            return new Swordsman();
         case UnitType::HorsemanType:
-            return new Horseman(customer);
+            return new Horseman();
         case UnitType::UnitTypeNull:
             return nullptr;
         }
