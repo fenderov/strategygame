@@ -1,4 +1,5 @@
 #include "unitfactory.h"
+#include <QDebug>
 
 UnitFactory::UnitFactory()
 {
@@ -6,7 +7,7 @@ UnitFactory::UnitFactory()
 }
 
 Unit* UnitFactory::UnitCreationTick(){
-    if(_unitbuildingtimer > 0) _unitbuildingtimer--;
+    --_unitbuildingtimer;
     if(_unitbuildingtimer == 0){
         switch(_unittype){
         case UnitType::ArcherType:
@@ -18,6 +19,7 @@ Unit* UnitFactory::UnitCreationTick(){
         case UnitType::UnitTypeNull:
             return nullptr;
         }
+        _unittype = UnitType::UnitTypeNull;
     }
     return nullptr;
 }
@@ -27,11 +29,15 @@ void UnitFactory::UnitCreationOrder(UnitType type){
     switch(_unittype){
     case UnitType::ArcherType:
         _unitbuildingtimer = Archer::buildtime;
+        break;
     case UnitType::SwordsmanType:
         _unitbuildingtimer = Swordsman::buildtime;
+        break;
     case UnitType::HorsemanType:
         _unitbuildingtimer = Horseman::buildtime;
+        break;
     case UnitType::UnitTypeNull:
         _unitbuildingtimer = 0;
+        break;
     }
 }

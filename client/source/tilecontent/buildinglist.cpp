@@ -1,6 +1,6 @@
 #include "buildinglist.h"
 
-Castle::Castle(QWidget *parent) : Building(parent){
+Castle::Castle(QWidget *parent) : Building(parent), _income(5){
 
 }
 
@@ -8,7 +8,7 @@ Barracks::Barracks(QWidget *parent) : Building(parent){
 
 }
 
-Mine::Mine(QWidget *parent) : Building(parent){
+Mine::Mine(QWidget *parent) : Building(parent), _income(2){
 
 }
 

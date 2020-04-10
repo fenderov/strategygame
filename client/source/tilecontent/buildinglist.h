@@ -14,17 +14,17 @@ enum BuildingType {
     FortType = 4
 };
 
-class Castle : public Building, UnitFactory {
+class Castle : public Building, public UnitFactory {
     Q_OBJECT
 public:
     explicit Castle(QWidget *parent = nullptr);
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
 private:
-    unsigned char _income;
+    const unsigned char _income;
 };
 
-class Barracks : public Building, UnitFactory {
+class Barracks : public Building, public UnitFactory {
     Q_OBJECT
 public:
     explicit Barracks(QWidget *parent = nullptr);
@@ -39,7 +39,7 @@ public:
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
 private:
-    unsigned char _income;
+    const unsigned char _income;
 };
 
 class Fort : public Building {
