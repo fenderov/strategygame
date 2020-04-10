@@ -2,15 +2,22 @@
 #define MAP_H
 
 #include "tile.h"
-#include <QWidget>
-#include <QMainWindow>
+//#include "actionfield.h"
 
-class Map : QWidget
+#include <QWidget>
+#include <QResizeEvent>
+#include <QStyleOption>
+#include <QPainter>
+
+class Map : public QWidget
 {
     Q_OBJECT
 public:
-    Map();
+    explicit Map(QWidget *parent = nullptr);
     void Combat(Tile* attacking, Tile* defending);
+protected:
+    virtual void resizeEvent(QResizeEvent *event) override;
+    virtual void paintEvent(QPaintEvent *) override;
 
 };
 

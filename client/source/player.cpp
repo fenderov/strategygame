@@ -10,7 +10,7 @@ void Player::CangeMoney(int value){
     _money += value;
 }
 
-Fractions Player::getFraction()
+FractionType Player::getFraction()
 {
     return _fraction;
 }

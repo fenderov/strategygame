@@ -2,24 +2,30 @@
 #define TILE_H
 
 #include <vector>
-#include "building.h"
-#include "unitlist.h"
+#include "tilecontent/buildingfactory.h"
+#include "tilecontent/units/unitlist.h"
+#include "tilecontent/units/army.h"
 #include "player.h"
-#include <QMainWindow>
 
-class Tile
+#include <QWidget>
+
+class Tile : public QWidget, public BuildingFactory
 {
+    Q_OBJECT
 public:
-    Tile();
+    explicit Tile(QWidget *parent = nullptr);
     void AddUnit(Unit*);
     void ProduceMoney(unsigned char income);
-    unsigned int GetAttackPower();
-    unsigned int GetDefencePower();
-    Player* getOwner();
-    void setOwner(Player* newOwner);
+    Army* GetArmy() const;
+    Building* GetBuilding() const;
+    bool IsArmyEmpty() const;
+    bool BuildingExists() const;
+    unsigned int GetAttackPower() const;
+    unsigned int GetDefencePower() const;
+    Player* GetOwner() const;
+    void SetOwner(Player* newowner);
 private:
-    unsigned int GetBasePower();
-    std::vector<Unit*> _units;
+    Army* _army;
     Building* _building;
     Player* _owner;
 };

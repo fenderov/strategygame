@@ -1,9 +1,8 @@
 #include "unit.h"
 
-Unit::Unit(Fractions customer, unsigned char power, unsigned char actionPoint) :
-    owner(customer),
+Unit::Unit(unsigned char power, unsigned char actionpoints) :
     _power(power),
-    _actionPoints(actionPoint) {}
+    _actionPoints(actionpoints) {}
 
 void Unit::PureDamage(unsigned int damage){
     _power-=damage;

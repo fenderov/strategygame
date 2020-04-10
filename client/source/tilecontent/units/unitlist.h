@@ -2,7 +2,7 @@
 #define UNITLIST_H
 
 #include "unit.h"
-#include <QMainWindow>
+
 #include <map>
 
 enum UnitType {
@@ -14,22 +14,28 @@ enum UnitType {
 
 class Archer : public Unit{
 public:
-    Archer(Fractions customer);
+    Archer();
     static const std::map<UnitType, unsigned char> bonuses;
     static const unsigned int buildtime;
+    static const unsigned int baseactionpoints;
+    static const unsigned int basepower;
 };
 
 class Swordsman : public Unit{
 public:
-    Swordsman(Fractions customer);
+    Swordsman();
     static const std::map<UnitType, unsigned char> bonuses;
     static const unsigned int buildtime;
+    static const unsigned int baseactionpoints;
+    static const unsigned int basepower;
 };
 
 class Horseman : public Unit{
 public:
-    Horseman(Fractions customer);
-    static const unsigned int buildtime;
+    Horseman();
     static const std::map<UnitType, unsigned char> bonuses;
+    static const unsigned int buildtime;
+    static const unsigned int baseactionpoints;
+    static const unsigned int basepower;
 };
 #endif // UNITLIST_H
