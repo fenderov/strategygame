@@ -1,8 +1,7 @@
 #ifndef LAND_H
 #define LAND_H
 
-#include <QMainWindow>
-#include "actionfield.h"
+#include <string>
 
 struct Land{
     Land(std::string name, unsigned char defenceBonus, unsigned char attackBonus);

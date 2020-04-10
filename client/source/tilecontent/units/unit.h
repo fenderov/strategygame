@@ -1,11 +1,6 @@
 #ifndef UNIT_H
 #define UNIT_H
 
-#include <QMainWindow>
-
-#include "player.h"
-#include "actionfield.h"
-
 class Unit
 {
 public:

@@ -2,10 +2,7 @@
 #define UNITLIST_H
 
 #include "unit.h"
-#include "player.h"
-#include "actionfield.h"
 
-#include <QMainWindow>
 #include <map>
 
 enum UnitType {

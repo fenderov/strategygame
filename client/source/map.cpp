@@ -23,21 +23,10 @@ void Map::resizeEvent(QResizeEvent *event){
     int width = event->size().width();
     int oldwidth = event->oldSize().width();
 
-    setMaximumHeight(width);
-    setMaximumWidth(height);
-    //setMaximumHeight(width);
-    setMaximumHeight(5000);
+    //Здесь будет настройка дизайна карты.
+    //По задумке она должна быть всегда квадратной.
 
-    /*if(height < width){
-        setMaximumHeight(width);
-        setMaximumWidth(height);
-        //setMaximumHeight(width);
-        setMaximumHeight(5000);
-    } else if(height > width){
-        setMaximumWidth(height);
-        setMaximumHeight(width);
-        setMaximumWidth(5000);
-    }*/
-    //setMinimumWidth(height);
     //setMaximumHeight(width);
+    //setMaximumWidth(height);
+    //setMaximumHeight(5000);
 }

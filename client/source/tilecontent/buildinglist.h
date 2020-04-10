@@ -2,8 +2,7 @@
 #define BUILDINGLIST_H
 
 #include "building.h"
-#include "unitfactory.h"
-#include "actionfield.h"
+#include "units/unitfactory.h"
 
 #include <QWidget>
 
@@ -21,7 +20,6 @@ public:
     explicit Castle(QWidget *parent = nullptr);
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
-    void BrowseActions(ActionField* actionfield) override;
 private:
     unsigned char _income;
 };
@@ -32,7 +30,6 @@ public:
     explicit Barracks(QWidget *parent = nullptr);
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
-    void BrowseActions(ActionField* actionfield) override;
 };
 
 class Mine : public Building {
@@ -41,7 +38,6 @@ public:
     explicit Mine(QWidget *parent = nullptr);
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
-    void BrowseActions(ActionField* actionfield) override;
 private:
     unsigned char _income;
 };
@@ -52,7 +48,6 @@ public:
     explicit Fort(QWidget *parent = nullptr);
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
-    void BrowseActions(ActionField* actionfield) override;
 private:
 };
 

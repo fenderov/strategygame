@@ -5,7 +5,7 @@ Army::Army()
 
 }
 
-bool Army::Empty() const{
+bool Army::IsEmpty() const{
     return true;
 }
 

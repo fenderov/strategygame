@@ -2,7 +2,8 @@
 #define MAP_H
 
 #include "tile.h"
-#include "actionfield.h"
+//#include "actionfield.h"
+
 #include <QWidget>
 #include <QResizeEvent>
 #include <QStyleOption>

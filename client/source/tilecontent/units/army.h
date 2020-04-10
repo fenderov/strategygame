@@ -4,7 +4,6 @@
 #include <QVector>
 #include <QObject>
 
-#include "actionfield.h"
 #include "unitlist.h"
 
 class Army : public QObject
@@ -13,8 +12,7 @@ class Army : public QObject
 public:
     Army();
     void AddUnit(Unit* unit);
-    void BrowseActions(ActionField* actionfield);
-    bool Empty() const;
+    bool IsEmpty() const;
     unsigned int GetPower() const;
 };
 

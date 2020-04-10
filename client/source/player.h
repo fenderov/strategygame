@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include "fraction.h"
-#include "actionfield.h"
 
 class Player
 {
