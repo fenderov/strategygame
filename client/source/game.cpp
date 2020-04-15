@@ -2,7 +2,16 @@
 
 Game::Game(QWidget *parent) : QWidget(parent)
 {
+    _map = new Map(this);
+}
 
+Game::~Game(){
+    if(_map != nullptr)
+        delete _map;
+}
+
+Map* Game::GetMap(){
+    return _map;
 }
 
 void Game::paintEvent(QPaintEvent*) {

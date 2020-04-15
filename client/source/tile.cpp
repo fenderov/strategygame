@@ -1,7 +1,13 @@
 #include "tile.h"
 
 Tile::Tile(QWidget *parent) : QWidget(parent){
+    _building = nullptr;
+    _army = nullptr;
+}
 
+Tile::~Tile(){
+    if(_army != nullptr) delete _army;
+    if(_building != nullptr) delete _building;
 }
 
 bool Tile::IsArmyEmpty() const{
@@ -40,6 +46,10 @@ Player* Tile::GetOwner() const{
 }
 void Tile::SetOwner(Player* newOwner){
     _owner = newOwner;
+}
+
+void Tile::SetBuilding(BuildingType type){
+    _building = CreateBuilding(type);
 }
 
 //onclick - сравнение по овнеру

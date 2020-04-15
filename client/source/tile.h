@@ -15,6 +15,7 @@ class Tile : public QWidget, public BuildingFactory
 public:
     explicit Tile(QWidget *parent = nullptr);
     void AddUnit(Unit*);
+    void SetBuilding(BuildingType type);
     void ProduceMoney(unsigned char income);
     Army* GetArmy() const;
     Building* GetBuilding() const;
@@ -24,6 +25,7 @@ public:
     unsigned int GetDefencePower() const;
     Player* GetOwner() const;
     void SetOwner(Player* newowner);
+    ~Tile();
 private:
     Army* _army;
     Building* _building;

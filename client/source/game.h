@@ -13,10 +13,13 @@ class Game: public QWidget
     Q_OBJECT
 public:
     explicit Game(QWidget *parent = nullptr);
+    ~Game();
+    Map* GetMap();
     //void BrowseActions();
 protected:
     void paintEvent(QPaintEvent *);
 private:
+    Map* _map;
     //ActionField* _actionfield;
 public slots:
     /*void EndTurn();
