@@ -28,26 +28,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <layout class="QGridLayout" name="mainlayout">
-      <item row="0" column="0">
-       <widget class="Game" name="game" native="true">
-        <property name="sizeIncrement">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color:black;</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="gamelayout"/>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
+     <layout class="QGridLayout" name="mainlayout"/>
     </item>
    </layout>
   </widget>
@@ -74,14 +55,6 @@
    </attribute>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>Game</class>
-   <extends>QWidget</extends>
-   <header>source/game.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

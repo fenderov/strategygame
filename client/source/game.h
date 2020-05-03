@@ -2,36 +2,28 @@
 #define GAME_H
 
 #include <QWidget>
-#include <QStyleOption>
-#include <QPainter>
+#include <QHBoxLayout>
 
 #include "map.h"
-//#include "actionfield.h"
+#include "actionfield.h"
+#include "database.h"
+#include "widget.h"
 
-class Game: public QWidget
+class Game: public Widget
 {
     Q_OBJECT
 public:
     explicit Game(QWidget *parent = nullptr);
     ~Game();
     Map* GetMap();
-    //void BrowseActions();
-protected:
-    void paintEvent(QPaintEvent *);
+    void HandleAction(Action* action);
+    void BrowseActions(int id);
 private:
+    Database* _database;
     Map* _map;
-    //ActionField* _actionfield;
+    ActionField* _actionfield;
 public slots:
-    /*void EndTurn();
-    void BrowseTileActions();
-    void BrowseTileCreateBuildingActions();
-    void BrowseBuildingActions();
-    void BrowseBuildingCreateUnitActions();
-    void BrowseArmyUnitedActions();
-    void BrowseArmyReunitedActions();
-    void BrowseUnitActions();
-    void BrowseUnitAttackActions();
-    void BrowseUnitMoveActions();*/
+    void HandleActionSlot();
 };
 
 #endif // GAME_H

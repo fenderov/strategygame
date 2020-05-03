@@ -25,6 +25,10 @@ add_library(units SHARED
     unitfactory.h
     army.cpp
     army.h
+    object.cpp
+    object.h
+    action.cpp
+    action.h
 )
 
 target_link_libraries(units Qt5::Widgets)

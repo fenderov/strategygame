@@ -5,8 +5,8 @@ Army::Army(){
 }
 
 Army::~Army(){
-    for(unsigned int i = 0; i < _units.size(); ++i){
-        delete _units[i];
+    for(auto unit: _units){
+        delete unit;
     }
 }
 
@@ -15,5 +15,8 @@ bool Army::IsEmpty() const{
 }
 
 unsigned int Army::GetPower() const{
-    return 0;
+    unsigned int power = 0;
+    for(auto unit: _units){
+        power += unit->GetCombatPower();
+    }
 }

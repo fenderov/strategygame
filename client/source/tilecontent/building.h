@@ -5,12 +5,11 @@
 
 #include <QWidget>
 
-class Building : public QWidget
+class Building : public Object
 {
-    Q_OBJECT
 
 public:
-    explicit Building(QWidget *parent = nullptr);
+    explicit Building();
     virtual Unit* GetProducedUnits() = 0;
     virtual unsigned char GetProducedMoney() = 0;
     unsigned char GetDefenceBonus() const;

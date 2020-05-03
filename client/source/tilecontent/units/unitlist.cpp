@@ -16,10 +16,10 @@ const unsigned int Swordsman::baseactionpoints = 0;
 const unsigned int Swordsman::basepower = 0;
 
 Archer::Archer():
-    Unit(basepower, baseactionpoints) {};
+    Unit(basepower, baseactionpoints) {}
 
 Horseman::Horseman():
-    Unit(basepower, baseactionpoints) {};
+    Unit(basepower, baseactionpoints) {}
 
 Swordsman::Swordsman():
-    Unit(basepower, baseactionpoints) {};
+    Unit(basepower, baseactionpoints) {}

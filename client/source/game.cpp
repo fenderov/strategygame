@@ -1,8 +1,21 @@
 #include "game.h"
 
-Game::Game(QWidget *parent) : QWidget(parent)
+Game::Game(QWidget *parent) : Widget(parent)
 {
+    QHBoxLayout* _layout = new QHBoxLayout();
     _map = new Map(this);
+    _map->setMinimumSize(400, 400);
+    _actionfield = new ActionField(this);
+    //QSizePolicy mappolicy;
+    //QSizePolicy actionfieldpolicy;
+    //mappolicy.setHorizontalStretch(100);
+    //actionfieldpolicy.setHorizontalStretch(20);
+    //_map->setSizePolicy(mappolicy);
+    //_actionfield->setSizePolicy(actionfieldpolicy);
+    _layout->addWidget(_map);
+    _layout->addWidget(_actionfield);
+    setLayout(_layout);
+    setStyleSheet("background-color: black;");
 }
 
 Game::~Game(){
@@ -14,12 +27,47 @@ Map* Game::GetMap(){
     return _map;
 }
 
-void Game::paintEvent(QPaintEvent*) {
-    QStyleOption opt;
-    opt.init(this);
-    QPainter p(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+void Game::HandleAction(Action* action){
+    //TODO
 }
+
+void Game::HandleActionSlot(){
+    Button* clickedButton = qobject_cast<Button *>(sender());
+    Action* action = clickedButton->GetAction();
+    HandleAction(action);
+}
+
+void Game::BrowseActions(int id){
+    _actionfield->NewMenu();
+    QVector<QString> actions = _database->GetById(id)->GetPossibleActions();
+    for(auto action: actions){
+        _actionfield->AddAction(new Action(id, action, nullptr));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Эта часть кода временно заморожена
 

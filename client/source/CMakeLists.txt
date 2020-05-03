@@ -29,6 +29,14 @@ add_library(source SHARED
     player.h
     fraction.cpp
     fraction.h
+    database.cpp
+    database.h
+    actionfield.cpp
+    actionfield.h
+    button.cpp
+    button.h
+    widget.cpp
+    widget.h
 )
 
 target_link_libraries(source Qt5::Widgets tilecontent)

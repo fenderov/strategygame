@@ -1,15 +1,16 @@
 #ifndef TILE_H
 #define TILE_H
 
-#include <vector>
+#include "widget.h"
 #include "tilecontent/buildingfactory.h"
 #include "tilecontent/units/unitlist.h"
 #include "tilecontent/units/army.h"
 #include "player.h"
 
 #include <QWidget>
+#include <QResizeEvent>
 
-class Tile : public QWidget, public BuildingFactory
+class Tile : public Widget, public BuildingFactory
 {
     Q_OBJECT
 public:
@@ -26,6 +27,8 @@ public:
     Player* GetOwner() const;
     void SetOwner(Player* newowner);
     ~Tile();
+protected:
+    virtual void resizeEvent(QResizeEvent *event) override;
 private:
     Army* _army;
     Building* _building;

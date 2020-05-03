@@ -1,7 +1,9 @@
 #ifndef UNIT_H
 #define UNIT_H
 
-class Unit
+#include "object.h"
+
+class Unit : public Object
 {
 public:
     Unit(unsigned char power, unsigned char actionpoints);

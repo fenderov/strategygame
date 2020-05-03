@@ -1,6 +1,6 @@
 #include "building.h"
 
-Building::Building(QWidget *parent) : QWidget(parent){
+Building::Building(){
 
 }
 

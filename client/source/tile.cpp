@@ -1,8 +1,9 @@
 #include "tile.h"
 
-Tile::Tile(QWidget *parent) : QWidget(parent){
+Tile::Tile(QWidget *parent) : Widget(parent){
     _building = nullptr;
     _army = nullptr;
+    setStyleSheet("background-color: white;");
 }
 
 Tile::~Tile(){
@@ -50,6 +51,17 @@ void Tile::SetOwner(Player* newOwner){
 
 void Tile::SetBuilding(BuildingType type){
     _building = CreateBuilding(type);
+}
+
+void Tile::resizeEvent(QResizeEvent *event){
+    int height = event->size().height();
+    int oldheight = event->oldSize().height();
+    int width = event->size().width();
+    int oldwidth = event->oldSize().width();
+
+    //setMaximumHeight(width);
+    //setMaximumWidth(height);
+    //setMaximumHeight(5000);
 }
 
 //onclick - сравнение по овнеру

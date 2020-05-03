@@ -1,14 +1,21 @@
 #include "map.h"
 
-Map::Map(QWidget *parent) : QWidget(parent){
+Map::Map(QWidget *parent) : Widget(parent){
+    QGridLayout* _layout = new QGridLayout(this);
     _size.setHeight(10);
     _size.setWidth(10);
     for(int i = 0; i < _size.height(); ++i){
         QVector<Tile*> temp;
-        for(int j = 0; j < _size.width(); ++j)
-            temp.push_back(new Tile(this));
+        for(int j = 0; j < _size.width(); ++j){
+            Tile* tile = new Tile(this);
+            temp.push_back(tile);
+            _layout->addWidget(tile, i, j);
+            tile->show();
+        }
         _tiles.push_back(temp);
     }
+    setLayout(_layout);
+    setStyleSheet("background-color: grey;");
 }
 
 Map::~Map(){
@@ -25,13 +32,6 @@ void Map::Combat(Tile *attacking, Tile *defending){
     int attackpower = attacking->GetAttackPower();
     int defencepower = defending->GetDefencePower();
     //...
-}
-
-void Map::paintEvent(QPaintEvent*){
-    QStyleOption opt;
-    opt.init(this);
-    QPainter p(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 void Map::resizeEvent(QResizeEvent *event){
