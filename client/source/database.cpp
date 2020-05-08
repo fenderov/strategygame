@@ -5,13 +5,13 @@ Database::Database(){
 }
 
 Object* Database::GetById(int id){
-    return nullptr;
+    return _map[id];
 }
 
-void Register(Object* object){
-
+void Database::Register(Object* object){
+    _map.insert(object->id, object);
 }
 
-void Remove(int id){
-
+void Database::Remove(int id){
+    _map.remove(id);
 }

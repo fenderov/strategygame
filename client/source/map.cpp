@@ -2,6 +2,7 @@
 
 Map::Map(QWidget *parent) : Widget(parent){
     QGridLayout* _layout = new QGridLayout(this);
+    _layout->setSpacing(0);
     _size.setHeight(10);
     _size.setWidth(10);
     for(int i = 0; i < _size.height(); ++i){
@@ -10,6 +11,7 @@ Map::Map(QWidget *parent) : Widget(parent){
             Tile* tile = new Tile(this);
             temp.push_back(tile);
             _layout->addWidget(tile, i, j);
+            tile->Refresh();
             tile->show();
         }
         _tiles.push_back(temp);
@@ -26,6 +28,10 @@ Map::~Map(){
 
 Tile* Map::GetTile(int x, int y){
     return _tiles[x][y];
+}
+
+QSize Map::GetSize() const{
+    return _size;
 }
 
 void Map::Combat(Tile *attacking, Tile *defending){

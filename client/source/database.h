@@ -13,7 +13,7 @@ public:
     void Register(Object* object);
     void Remove(int id);
 private:
-    QMap<int, Object*> map;
+    QMap<int, Object*> _map;
 };
 
 #endif // DATABASE_H

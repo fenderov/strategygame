@@ -16,7 +16,7 @@ bool Army::IsEmpty() const{
 
 unsigned int Army::GetPower() const{
     unsigned int power = 0;
-    for(auto unit: _units){
-        power += unit->GetCombatPower();
+    for(int i = 0; i < _units.size(); ++i){
+        power += _units[i]->GetCombatPower();
     }
 }

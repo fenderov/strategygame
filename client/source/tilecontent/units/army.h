@@ -2,13 +2,10 @@
 #define ARMY_H
 
 #include <QVector>
-#include <QObject>
-
 #include "unitlist.h"
 
-class Army : public QObject
+class Army : public Object
 {
-    Q_OBJECT
 public:
     Army();
     void AddUnit(Unit* unit);

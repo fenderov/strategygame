@@ -2,14 +2,13 @@
 #define BUTTON_H
 
 #include <QPushButton>
-
 #include "tilecontent/units/action.h"
 
 class Button : public QPushButton
 {
     Q_OBJECT
 public:
-    Button(QWidget* parent);
+    explicit Button(QWidget* parent = nullptr);
     Action* GetAction();
     void SetAction(Action* action);
 private:

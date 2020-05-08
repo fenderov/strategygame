@@ -10,7 +10,9 @@ class Object
 {
 public:
     Object();
-    Action DoAction(const Action& action);
+    virtual Action* HandleAction(Action* action);
+    virtual void Highlight();
+    virtual void Unhighlight();
     QVector<QString> GetPossibleActions();
     const unsigned int id;
 private:

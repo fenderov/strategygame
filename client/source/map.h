@@ -18,6 +18,7 @@ public:
     explicit Map(QWidget *parent = nullptr);
     ~Map();
     Tile* GetTile(int x, int y);
+    QSize GetSize() const;
     void Combat(Tile* attacking, Tile* defending);
 protected:
     virtual void resizeEvent(QResizeEvent *event) override;

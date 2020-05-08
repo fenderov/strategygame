@@ -3,11 +3,19 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QFontDatabase>
 
 #include "map.h"
 #include "actionfield.h"
 #include "database.h"
 #include "widget.h"
+
+
+enum MapState{
+    WaitingTileClick,
+    Disabled,
+    WaitingTargetClick
+};
 
 class Game: public Widget
 {
@@ -16,14 +24,19 @@ public:
     explicit Game(QWidget *parent = nullptr);
     ~Game();
     Map* GetMap();
-    void HandleAction(Action* action);
-    void BrowseActions(int id);
 private:
     Database* _database;
     Map* _map;
     ActionField* _actionfield;
+    MapState _mapstate;
+    Action* _handlingaction;
+    void AddButton(QString actionname, int sender, QString buttonname = "sample", QVector<int> params = QVector<int>());
+    void HandleAction(Action* action);
+    void BrowseActions(int id);
+    void BrowseTileActions(Tile* tile);
 public slots:
-    void HandleActionSlot();
+    void ActionButtonPressed();
+    void TilePressed();
 };
 
 #endif // GAME_H

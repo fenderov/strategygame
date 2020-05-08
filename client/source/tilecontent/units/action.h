@@ -7,7 +7,7 @@
 class Action
 {
 public:
-    Action(int sender, QString name, QVector<int>* params);
+    Action(int sender, QString name, QVector<int> params = QVector<int>());
     Action();
 public:
     const int sender;

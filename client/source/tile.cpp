@@ -1,9 +1,12 @@
 #include "tile.h"
 
-Tile::Tile(QWidget *parent) : Widget(parent){
+#include <iostream>
+
+Tile::Tile(QWidget *parent) : Button(parent){
     _building = nullptr;
     _army = nullptr;
     setStyleSheet("background-color: white;");
+    _image = QPixmap("images/sample.png");
 }
 
 Tile::~Tile(){
@@ -53,15 +56,21 @@ void Tile::SetBuilding(BuildingType type){
     _building = CreateBuilding(type);
 }
 
-void Tile::resizeEvent(QResizeEvent *event){
-    int height = event->size().height();
-    int oldheight = event->oldSize().height();
-    int width = event->size().width();
-    int oldwidth = event->oldSize().width();
-
-    //setMaximumHeight(width);
-    //setMaximumWidth(height);
-    //setMaximumHeight(5000);
+Action* Tile::HandleAction(Action *action){
+    return action;
 }
 
-//onclick - сравнение по овнеру
+void Tile::Highlight(){
+    setStyleSheet("background-color: grey");
+}
+
+void Tile::Unhighlight(){
+    setStyleSheet("background-color: white");
+}
+
+void Tile::Refresh(){
+    std::cerr<<_image.width()<<" "<<_image.height()<<"\n";
+    QIcon icon(_image);
+    setIcon(icon);
+    setIconSize(_image.rect().size());
+}
