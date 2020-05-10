@@ -2,49 +2,106 @@
 #define NETWORKPACKAGE_H
 
 #include <QObject>
+#include <QDataStream>
+
 #include <variant>
-#include <string>
-#include <cassert>
-//#include "Action"
 
-class TextMessage {
+class BaseMessage {
 public:
-    TextMessage(const QString& str) :
-        message(str) {};
-    const QString message;
+    BaseMessage() = default;
+    BaseMessage(const BaseMessage&) = default;
+    BaseMessage(bool);
+
+    BaseMessage& operator=(const BaseMessage&) = default;
+    ~BaseMessage() = default;
+
+    bool isDefined() const;
+protected:
+    bool defined;
 };
 
-class GameDataMessage {
+class TextMessage : public BaseMessage {
 public:
+    TextMessage();
+    TextMessage(size_t, const QString&);
 
+    TextMessage(const TextMessage&) = default;
+    TextMessage& operator=(const TextMessage&) = default;
+    ~TextMessage() = default;
+
+    friend QDataStream& operator << (QDataStream &out, const TextMessage& pack);
+    friend QDataStream& operator >> (QDataStream &in, TextMessage& pack);
+
+    QString getText() const;
+    qulonglong getDest() const;
+private:
+    QString text_;
+    qulonglong dest_;
+};
+
+class GameDataMessage : public BaseMessage {
+public:
+    GameDataMessage();
+    //GameDataMessage(somthing)
+
+    GameDataMessage(const GameDataMessage&) = default;
+    GameDataMessage& operator=(const GameDataMessage&) = default;
+    ~GameDataMessage() = default;
+
+    friend QDataStream& operator << (QDataStream &out, const GameDataMessage& pack);
+    friend QDataStream& operator >> (QDataStream &in, GameDataMessage& pack);
 private:
 };
 
-class ErrorMessage {
+class ErrorMessage : public BaseMessage {
 public:
+    ErrorMessage();
+    //ErrorMessage(somthing)
 
+    ErrorMessage(const ErrorMessage&) = default;
+    ErrorMessage& operator=(const ErrorMessage&) = default;
+    ~ErrorMessage() = default;
+
+    friend QDataStream& operator << (QDataStream &out, const ErrorMessage& pack);
+    friend QDataStream& operator >> (QDataStream &in, ErrorMessage& pack);
 private:
 };
 
-
+struct Package {
+    qulonglong senderId_;
+    TextMessage text_;
+    GameDataMessage gameData_;
+    ErrorMessage error_;
+};
 
 class NetworkPackage {
 public:
-    template <typename T>
-    NetworkPackage(size_t senderId, size_t dest, T a) :
-        senderId_(senderId),
-        dest_(dest),
-        data_(a) {};
+    NetworkPackage() = default;
 
-    template <typename T>
-    T getData();
+    NetworkPackage(qulonglong,
+                   TextMessage = TextMessage(),
+                   GameDataMessage = GameDataMessage(),
+                   ErrorMessage = ErrorMessage());
 
+    NetworkPackage(const NetworkPackage&) = default;
+    NetworkPackage& operator=(const NetworkPackage&) = default;
+    ~NetworkPackage() = default;
 
+    friend QDataStream& operator << (QDataStream &out, const NetworkPackage& pack);
+    friend QDataStream& operator >> (QDataStream &in, NetworkPackage& pack);
+
+    void update(TextMessage = TextMessage(),
+                GameDataMessage = GameDataMessage(),
+                ErrorMessage = ErrorMessage());
+
+    Package getData() const;
 private:
-    const size_t senderId_;
-    const size_t dest_;
+    qulonglong senderId_;
 
-    const std::variant<TextMessage, GameDataMessage, ErrorMessage> data_;
+    TextMessage text_;
+    GameDataMessage gameData_;
+    ErrorMessage error_;
+
 };
 
 #endif // NETWORKPACKAGE_H

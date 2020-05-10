@@ -23,6 +23,7 @@ private slots:
     void on_hostbutton_clicked();
     void slotNewConnection();
     void slotUpdateListUsers();
+    void slotGameOver();
 
 private:
     Ui::Server *ui;

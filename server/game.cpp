@@ -2,13 +2,14 @@
 
 Game::Game(QMap<size_t, QTcpSocket*> mapPlayers):
     players_(mapPlayers),
-    status_(None) {
+    curPlayer(players_.end()),
+    status_(NONE) {
+
     foreach(QTcpSocket* sock, players_.values()) {
         connect(sock, &QTcpSocket::readyRead, this, &Game::slotReadClient);
         connect(sock, &QTcpSocket::stateChanged, this, &Game::slotPlayerStateHandler);
     }
     setUp();
-    connect(this, &Game::gameStatusChanged, this, &Game::slotGameStatusHandler);
 }
 
 Game::~Game() {
@@ -21,40 +22,64 @@ Game::~Game() {
 void Game::hasGotPack() {
     if (history_.empty())
         return;
-    DUMMY& Pack = history_.back();
+    Package pack = history_.back().getData();
 
-    /*if (Pack == DUMMY::ENDPACK) {
-        status_ = GameStatus::End;
-    }*/
+    if (pack.error_.isDefined()) {
+        //Save error somewhere;
+        qDebug() << "Client error";
+        status_ = END;
+        GameStatusHandler();
+    }
 
-    /*if (Pack.sender == status_) {
-        status_ = static_cast<GameStatus>((status_ + 1) % players_.size());
-    }*/
+    if (pack.gameData_.isDefined()) {
+        //Do somthenig
 
-    emit gameStatusChanged();
+        if (pack.senderId_ ==  curPlayer.key()) {
+            GameStatusHandler();
+        }
+    }
+
+    if (pack.text_.isDefined()) {
+        qDebug() << "We get message: " + pack.text_.getText();
+        if (pack.text_.getDest() == INT_MAX) {
+            //multySend_();
+        } else {
+            send_(players_[pack.text_.getDest()], NetworkPackage(pack.senderId_, TextMessage(pack.text_.getDest(), pack.text_.getText())));
+        }
+    }
+
 }
 
 void Game::setUp() {
-    status_ = FirstPlayer;
-    emit gameStatusChanged();
+    status_ = GAMING;
+    GameStatusHandler();
 }
 
-void Game::slotGameStatusHandler() {
+void Game::GameStatusHandler() {
     switch(status_) {
-        case GameStatus::None:
+        case GameStatus::GAMING: {
+            qDebug() << "Gaming mode";
+
+            if (curPlayer == players_.end()) {
+                curPlayer = players_.begin();
+            } else {
+                curPlayer++;
+            }
+
+            NetworkPackage a(0, TextMessage(curPlayer.key(), "Your turn")), b(0, TextMessage(0, "Waiting for"));
+            send_(curPlayer.value(), a);
+
+            QMap<size_t, QTcpSocket*> temp(players_);
+            temp.erase(curPlayer);
+            multySend_(temp.values(), b);
+            break;
+        }
+        case GameStatus::NONE:
             qDebug() << "None-state, you're do somtheng wrong";
             break;
-        case GameStatus::End:
+        case GameStatus::END:
             qDebug() << "Game over";
-            break;
-        default: //That means - player turn
-            DUMMY d; //Your turn man (need templates)
-            send_(players_[static_cast<size_t>(status_)], d);
-
-            DUMMY x; //Waiting for player x (also need template)
-            QMap<size_t, QTcpSocket*> temp(players_);
-            temp.erase(temp.find(status_));
-            multySend_(temp.values(), x);
+            emit signalGameOver();
             break;
     }
 }

@@ -8,10 +8,9 @@
 #include "basenetwork.h"
 
 enum GameStatus {
-    None = 0,
-    FirstPlayer = 1,
-    SecondPlayer = 2,
-    End = INT_MAX
+    NONE = 0,
+    GAMING = 1,
+    END = INT_MAX
 };
 
 class Game : public BaseNetwork {
@@ -21,15 +20,18 @@ public:
     ~Game();
 
 signals:
-    void gameStatusChanged();
+    void signalGameOver();
 
 private slots:
-    void slotGameStatusHandler();
     void slotPlayerStateHandler();
 
 private:
+    void GameStatusHandler();
+
     QMap<size_t, QTcpSocket*> players_;
-    GameStatus status_ = None;
+    QMap<size_t, QTcpSocket*>::iterator curPlayer;
+
+    GameStatus status_ = NONE;
 
     void hasGotPack() override;
     void setUp();

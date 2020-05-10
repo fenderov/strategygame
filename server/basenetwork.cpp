@@ -7,7 +7,7 @@ void BaseNetwork::send_(QTcpSocket *sock, const NetworkPackage& pack){
     QByteArray  bytes;
     QDataStream out(&bytes, QIODevice::WriteOnly);
 
-    out << quint16(0) << pack ///
+    out << quint16(0) << pack;
 
     out.device()->seek(0);
     out << quint16(bytes.size() - sizeof(quint16));
@@ -26,18 +26,16 @@ void BaseNetwork::slotReadClient() {
 
     QDataStream in(socket);
     quint16 blockSize = 0;
+    NetworkPackage pack;
     while(true){
         if (blockSize == 0) {
             if (size_t(socket->bytesAvailable()) < sizeof(quint16)) break;
             in >> blockSize;
         }
         if (socket->bytesAvailable() < blockSize) break;
-        QString message;
-        in >> message;
-        qDebug() << "We have got a string: " << message;
+        in >> pack;
         blockSize = 0;
     }
-
-    history_.push_back(pack);
+    history_.push_back(pack); 
     hasGotPack();
 }

@@ -49,6 +49,12 @@ void Server::slotNewConnection(){
     }
 }
 
+void Server::slotGameOver() {
+    Game* game = static_cast<Game*>(QObject::sender());
+    QVector<Game*>::iterator it = std::find(games_.begin(), games_.end(), game);
+    games_.erase(it);
+}
+
 void Server::closeAllConnections_() {
     if(isListening_){
         foreach(QTcpSocket* i, queue_) {
@@ -79,15 +85,15 @@ void Server::createGame_() {
         disconnect(queue_.front(), &QTcpSocket::stateChanged, this, &Server::slotUpdateListUsers);
         queue_.pop_front();
     }
-
+    connect(games_.back(), &Game::signalGameOver, this, &Server::slotGameOver);
     games_.push_back(new Game(delivery));
 }
 
 void Server::hasGotPack() {
-    if (!history_.empty()) {
-        qDebug() << history_.back().toString();
-    }
+    if (!history_.empty())
+        return;
 
+    //Check last element
     //Maybe send in answer something
 }
 
