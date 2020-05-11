@@ -9,6 +9,7 @@ void BaseNetwork::send_(QTcpSocket *sock, const NetworkPackage& pack){
     QDataStream out(&bytes, QIODevice::WriteOnly);
 
     out << quint64(0) << pack;
+
     out.device()->seek(0);
     out << quint64(bytes.size() - sizeof(quint64));
 

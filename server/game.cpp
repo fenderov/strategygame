@@ -2,7 +2,7 @@
 
 Game::Game(QMap<size_t, QTcpSocket*> mapPlayers):
     players_(mapPlayers),
-    curPlayer(players_.end()),
+    curPlayer(players_.begin()),
     status_(NONE) {
 
     foreach(QTcpSocket* sock, players_.values()) {
@@ -24,7 +24,7 @@ void Game::hasGotPack() {
         return;
     Package pack = history_.back().getData();
 
-    if (pack.error_.isDefined()) {
+    /*if (pack.error_.isDefined()) {
         //Save error somewhere;
         qDebug() << "Client error";
         status_ = END;
@@ -37,14 +37,16 @@ void Game::hasGotPack() {
         if (pack.senderId_ ==  curPlayer.key()) {
             GameStatusHandler();
         }
-    }
+    }*/
 
     if (pack.text_.isDefined()) {
         qDebug() << "We get message: " + pack.text_.getText();
         if (pack.text_.getDest() == INT_MAX) {
-            //multySend_();
+            QMap<size_t, QTcpSocket*> temp(players_);
+            multySend_(players_.values(), NetworkPackage(pack.senderId_, TextMessage(INT_MAX, pack.text_.getText())));
+            GameStatusHandler();
         } else {
-            send_(players_[pack.text_.getDest()], NetworkPackage(pack.senderId_, TextMessage(pack.text_.getDest(), pack.text_.getText())));
+            //send_(players_[pack.text_.getDest()], NetworkPackage(pack.senderId_, TextMessage(pack.text_.getDest(), pack.text_.getText())));
         }
     }
 
@@ -60,17 +62,14 @@ void Game::GameStatusHandler() {
         case GameStatus::GAMING: {
             qDebug() << "Gaming mode";
 
-            if (curPlayer == players_.end()) {
-                curPlayer = players_.begin();
-            } else {
-                curPlayer++;
-            }
+            curPlayer++;
+            curPlayer = (curPlayer == players_.end() ? players_.begin() : curPlayer);
 
             NetworkPackage a(0, TextMessage(curPlayer.key(), "Your turn")), b(0, TextMessage(0, "Waiting for"));
             send_(curPlayer.value(), a);
 
             QMap<size_t, QTcpSocket*> temp(players_);
-            temp.erase(curPlayer);
+            temp.erase(temp.find(curPlayer.key()));
             multySend_(temp.values(), b);
             break;
         }

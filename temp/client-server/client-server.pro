@@ -4,10 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += gui
+QT       += core gui
 QT       += network
-
-CONFIG += c++17
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,17 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        basenetwork.cpp \
-        game.cpp \
         main.cpp \
+        network.cpp \
         networkpackage.cpp \
-        server.cpp
+        basenetwork.cpp
 
 HEADERS += \
-        basenetwork.h \
-        game.h \
+        network.h \
         networkpackage.h \
-        server.h
+        basenetwork.h
 
 FORMS += \
-    server.ui
+        network.ui

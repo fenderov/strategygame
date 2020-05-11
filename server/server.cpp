@@ -85,13 +85,18 @@ void Server::createGame_() {
         disconnect(queue_.front(), &QTcpSocket::stateChanged, this, &Server::slotUpdateListUsers);
         queue_.pop_front();
     }
-    connect(games_.back(), &Game::signalGameOver, this, &Server::slotGameOver);
     games_.push_back(new Game(delivery));
+    connect(games_.back(), &Game::signalGameOver, this, &Server::slotGameOver);
 }
 
 void Server::hasGotPack() {
-    if (!history_.empty())
+    if (history_.empty())
         return;
+
+    Package pack = history_.back().getData();
+    if (pack.text_.isDefined()) {
+        qDebug() << "Server has got new message : '" + pack.text_.getText() + "'";
+    }
 
     //Check last element
     //Maybe send in answer something
