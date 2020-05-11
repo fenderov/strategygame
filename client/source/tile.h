@@ -11,6 +11,9 @@
 #include <QWidget>
 #include <QResizeEvent>
 #include <QPixmap>
+#include <QPainter>
+#include <random>
+#include <ctime>
 
 class Tile : public Button, public BuildingFactory, public Object
 {
@@ -28,13 +31,17 @@ public:
     unsigned int GetDefencePower() const;
     Player* GetOwner() const;
     void SetOwner(Player* newowner);
-    Action* HandleAction(Action *action) override;
+    Action HandleAction(const Action& action) override;
     void Highlight() override;
     void Unhighlight() override;
-    void Refresh();
+    void Tick();
+    void DrawDisabled();
+    void DrawEnabled();
     ~Tile();
 private:
+    void Draw(const QPixmap& img);
     QPixmap _image;
+    QPixmap _imagedisabled;
     Army* _army;
     Building* _building;
     Player* _owner;

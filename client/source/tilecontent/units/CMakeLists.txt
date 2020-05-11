@@ -11,10 +11,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_library(units SHARED
     unit.cpp
@@ -31,6 +29,6 @@ add_library(units SHARED
     action.h
 )
 
-target_link_libraries(units Qt5::Widgets)
+target_link_libraries(units Qt5::Widgets Qt5::Network)
 install(TARGETS units DESTINATION ${PROJECT_SOURCE_DIR}/build/lib)
 

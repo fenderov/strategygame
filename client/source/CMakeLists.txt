@@ -11,11 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-
 add_subdirectory(tilecontent)
 
 add_library(source SHARED
@@ -37,8 +33,11 @@ add_library(source SHARED
     button.h
     widget.cpp
     widget.h
+    basenetwork.cpp
+    basenetwork.h
+    networkpackage.cpp
+    networkpackage.h
 )
 
-target_link_libraries(source Qt5::Widgets tilecontent)
-install(TARGETS source DESTINATION ${PROJECT_SOURCE_DIR}/lib)
+target_link_libraries(source Qt5::Widgets Qt5::Network tilecontent)
 

@@ -18,6 +18,10 @@ bool Building::PureDamage(unsigned char damage){
     else return false;
 }
 
+QPixmap Building::GetImage(){
+    return _image;
+}
+
 Building::~Building(){
 
 }

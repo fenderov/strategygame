@@ -16,8 +16,9 @@ public:
     unsigned char GetAttackBonus() const;
     bool PureDamage(unsigned char damage);
     ~Building();
-
+    QPixmap GetImage();
 protected:
+    QPixmap _image;
     unsigned char _health;
     unsigned char _defencebonus;
     unsigned char _attackbonus;

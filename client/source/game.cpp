@@ -17,17 +17,16 @@ Game::Game(QWidget *parent) : Widget(parent)
     }
 
     _actionfield = new ActionField(this);
-
-    //Временно размер окон фиксирован.
-    _map->setFixedSize(600,600);
-    _actionfield->setFixedSize(300, 600);
+    AddButton("next turn", 0, "Следующий ход");
 
     _layout->addWidget(_map);
     _layout->addWidget(_actionfield);
     setLayout(_layout);
     setStyleSheet("background-color: black;");
+    _map->setMaximumWidth(_map->height());
 
     _mapstate = MapState::WaitingTileClick;
+    _highlighted = nullptr;
 }
 
 Game::~Game(){
@@ -41,44 +40,81 @@ Map* Game::GetMap(){
 
 void Game::AddButton(QString actionname, int sender, QString buttonname, QVector<int> params){
     Button* button = new Button();
-    Action* action = new Action(sender, actionname, params);
+    Action action(sender, actionname, params);
     button->SetAction(action);
     button->setText(buttonname);
     connect(button, &Button::clicked, this, &Game::ActionButtonPressed);
     _actionfield->AddButton(button);
 }
 
-void Game::HandleAction(Action* action){
-    if(action->name == "back"){
-        if(action->sender != 0){
-            _database->GetById(action->sender)->Unhighlight();
+void Game::HandleAction(const Action& action){
+    if(action.name == "next turn"){
+        _map->TileTick();
+    }
+    else if(action.name == "purge"){
+        _actionfield->Purge();
+        _mapstate = MapState::WaitingTileClick;
+        if(_highlighted) _map->UnhighlightAll();
+        _highlighted = nullptr;
+    }
+    else if(action.name == "back"){
+        //TODO: Более кореектная проверка
+        if(action.sender != 0){
+            _map->UnhighlightAll();
         }
         _actionfield->Pop();
         if(_mapstate = MapState::WaitingTargetClick) _mapstate = MapState::Disabled;
         if(_actionfield->IsEmpty()) _mapstate = MapState::WaitingTileClick;
     }
-    if(action->name == "browse"){
-        int id = action->sender;
+    else if(action.name == "browse"){
+        int id = action.sender;
         Object* object = _database->GetById(id);
         QVector<QString> actions = object->GetPossibleActions();
 
         _actionfield->NewMenu();
 
         for(int i = 0; i < actions.size(); ++i){
-            AddButton(actions[i], id);
+            AddButton(actions[i], id, Action::Name(actions[i]));
         }
 
         AddButton("back", 0, "Назад");
     }
-    if(action->name == "create building"){
+    else if(action.name == "browse create building"){
         _actionfield->NewMenu();
+        AddButton("create building", action.sender, "Создать казармы", QVector<int>(1, 1));
+        AddButton("create building", action.sender, "Создать форт", QVector<int>(1, 2));
+        AddButton("create building", action.sender, "Создать шахту", QVector<int>(1, 3));
         AddButton("back", 0, "Назад");
     }
+    else if(action.name == "create building"){
+        Tile* tile = dynamic_cast<Tile*>(_database->GetById(action.sender));
+        int concrete = action.params[0];
+        if(concrete == 1){
+            tile->SetBuilding(BarracksType);
+        }
+        if(concrete == 2){
+            tile->SetBuilding(FortType);
+        }
+        if(concrete == 3){
+            tile->SetBuilding(MineType);
+        }
+        _database->Register(tile->GetBuilding());
+        Action naction(0, "purge");
+        HandleAction(naction);
+    }
+    else if(action.name == "browse create unit"){
+        _actionfield->NewMenu();
+        AddButton("create unit", action.sender, "Создать мечника", QVector<int>(1, 1));
+        AddButton("create unit", action.sender, "Создать лучника", QVector<int>(1, 2));
+        AddButton("create unit", action.sender, "Создать всадника", QVector<int>(1, 3));
+        AddButton("back", 0, "Назад");
+    }
+    else HandleAction(_database->GetById(action.sender)->HandleAction(action));
 }
 
 void Game::ActionButtonPressed(){
     Button* clickedButton = qobject_cast<Button*>(sender());
-    Action* action = clickedButton->GetAction();
+    Action action = clickedButton->GetAction();
     HandleAction(action);
 }
 
@@ -86,7 +122,8 @@ void Game::TilePressed(){
     Tile* clickedtile = qobject_cast<Tile*>(sender());
     if(_mapstate == MapState::WaitingTileClick){
         _mapstate = MapState::Disabled;
-        clickedtile->Highlight();
+        _highlighted = clickedtile;
+        _map->Highlight(clickedtile);
         BrowseTileActions(clickedtile);
     } else if(_mapstate == MapState::WaitingTargetClick){
         //
@@ -109,7 +146,7 @@ void Game::BrowseTileActions(Tile *tile){
     if(tile->BuildingExists()){
         AddButton("browse", tile->GetBuilding()->id, "Действия здания");
     } else{
-        AddButton("create building", tile->id, "Создать здание");
+        AddButton("browse create building", tile->id, "Создать здание");
     }
     if(!tile->IsArmyEmpty()){
         AddButton("browse", tile->GetArmy()->id, "Действия юнитов");

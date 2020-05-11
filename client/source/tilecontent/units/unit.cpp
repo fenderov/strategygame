@@ -11,3 +11,7 @@ void Unit::PureDamage(unsigned int damage){
 unsigned int Unit::GetCombatPower() const{
     return _power;
 }
+
+QPixmap Unit::GetImage(){
+    return _image;
+}

@@ -6,10 +6,10 @@ Button::Button(QWidget* parent) : QPushButton(parent){
     setSizePolicy(QSizePolicy(QSizePolicy::Expanding,  QSizePolicy::Expanding));
 }
 
-Action* Button::GetAction(){
+Action Button::GetAction(){
     return _action;
 }
 
-void Button::SetAction(Action* action){
+void Button::SetAction(const Action& action){
     _action = action;
 }

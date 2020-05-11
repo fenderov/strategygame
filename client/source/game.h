@@ -30,8 +30,9 @@ private:
     ActionField* _actionfield;
     MapState _mapstate;
     Action* _handlingaction;
+    Tile* _highlighted;
     void AddButton(QString actionname, int sender, QString buttonname = "sample", QVector<int> params = QVector<int>());
-    void HandleAction(Action* action);
+    void HandleAction(const Action& action);
     void BrowseActions(int id);
     void BrowseTileActions(Tile* tile);
 public slots:

@@ -19,6 +19,7 @@ public:
     Castle();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
 private:
     const unsigned char _income;
 };
@@ -28,6 +29,7 @@ public:
     Barracks();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
 };
 
 class Mine : public Building {
@@ -35,6 +37,7 @@ public:
     Mine();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
 private:
     const unsigned char _income;
 };
@@ -44,6 +47,7 @@ public:
     Fort();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
 private:
 };
 

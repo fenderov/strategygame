@@ -15,11 +15,18 @@ const unsigned int Swordsman::buildtime = 1;
 const unsigned int Swordsman::baseactionpoints = 0;
 const unsigned int Swordsman::basepower = 0;
 
+
 Archer::Archer():
-    Unit(basepower, baseactionpoints) {}
+    Unit(basepower, baseactionpoints) {
+    _image  = QPixmap("images/archer.png");
+}
 
 Horseman::Horseman():
-    Unit(basepower, baseactionpoints) {}
+    Unit(basepower, baseactionpoints) {
+    _image  = QPixmap("images/horseman.png");
+}
 
 Swordsman::Swordsman():
-    Unit(basepower, baseactionpoints) {}
+    Unit(basepower, baseactionpoints) {
+    _image  = QPixmap("images/swordsman.png");
+}

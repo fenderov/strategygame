@@ -12,6 +12,11 @@ QVector<QString> Object::GetPossibleActions(){
     return _possibleactions;
 }
 
+void Object::SetPossibleActions(QVector<QString> actions){
+    _possibleactions = actions;
+}
+
+
 void Object::Highlight(){
 
 }
@@ -20,6 +25,6 @@ void Object::Unhighlight(){
 
 }
 
-Action* Object::HandleAction(Action* action){
-    return action;
+Action Object::HandleAction(const Action& action){
+    return Action(0, "back");
 }

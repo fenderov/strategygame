@@ -9,10 +9,10 @@ class Button : public QPushButton
     Q_OBJECT
 public:
     explicit Button(QWidget* parent = nullptr);
-    Action* GetAction();
-    void SetAction(Action* action);
+    Action GetAction();
+    void SetAction(const Action& action);
 private:
-    Action* _action;
+    Action _action;
 };
 
 #endif // BUTTON_H

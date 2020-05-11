@@ -1,6 +1,8 @@
 #ifndef UNIT_H
 #define UNIT_H
 
+#include <QPixmap>
+
 #include "object.h"
 
 class Unit : public Object
@@ -10,8 +12,9 @@ public:
     unsigned int GetCombatPower() const;
     void PureDamage(unsigned int damage);
     void Health();
-    static const unsigned int buildtime;
+    QPixmap GetImage();
 protected:
+    QPixmap _image;
     unsigned char _power;
     unsigned char _actionPoints;
 };

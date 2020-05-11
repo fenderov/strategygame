@@ -20,6 +20,9 @@ public:
     Tile* GetTile(int x, int y);
     QSize GetSize() const;
     void Combat(Tile* attacking, Tile* defending);
+    void TileTick();
+    void Highlight(Tile* tile);
+    void UnhighlightAll();
 protected:
     virtual void resizeEvent(QResizeEvent *event) override;
 private:

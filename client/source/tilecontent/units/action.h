@@ -9,10 +9,10 @@ class Action
 public:
     Action(int sender, QString name, QVector<int> params = QVector<int>());
     Action();
-public:
-    const int sender;
-    const QString name;
-    const QVector<int> params;
+    static QString Name(QString action);
+    int sender;
+    QString name;
+    QVector<int> params;
 };
 
 #endif // ACTION_H

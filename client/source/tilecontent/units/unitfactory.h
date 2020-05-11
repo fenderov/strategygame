@@ -12,6 +12,7 @@ public:
 private:
     unsigned char _unitbuildingtimer;
     UnitType _unittype;
+    bool _isanyorder;
 };
 
 #endif // UNITFACTORY_H

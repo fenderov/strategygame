@@ -3,6 +3,8 @@
 
 #include <QVector>
 #include <QString>
+#include <QObject>
+#include <QDebug>
 
 #include "action.h"
 
@@ -10,10 +12,11 @@ class Object
 {
 public:
     Object();
-    virtual Action* HandleAction(Action* action);
+    virtual Action HandleAction(const Action& action);
     virtual void Highlight();
     virtual void Unhighlight();
     QVector<QString> GetPossibleActions();
+    void SetPossibleActions(QVector<QString> actions);
     const unsigned int id;
 private:
     static unsigned int _idencounter;

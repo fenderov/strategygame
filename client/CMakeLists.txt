@@ -11,20 +11,28 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
+find_package(Qt5 COMPONENTS Network REQUIRED)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package (GTest REQUIRED)
 find_package (Threads REQUIRED)
 
-set(CMAKE_INSTALL_RPATH build/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 project(Client)
 include_directories(include)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Client_SOURCE_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Client_SOURCE_DIR}/lib)
+macro(copy_directory _src _dst)
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${_src} ${_dst}
+        RESULT_VARIABLE _res
+        OUTPUT_VARIABLE _out
+        ERROR_VARIABLE  _err
+    )
+    if(_err)
+        message(FATAL_ERROR "ERROR ---> could not be copied: ${_err}")
+    endif()
+endmacro()
+
+copy_directory(${CMAKE_SOURCE_DIR}/images ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/images)
 
 add_subdirectory(source)
 
@@ -32,9 +40,12 @@ add_library(clientmainlib
     client.cpp
     client.h
     client.ui
+    network.cpp
+    network.h
+    network.ui
 )
 
-target_link_libraries(clientmainlib Qt5::Widgets source)
+target_link_libraries(clientmainlib Qt5::Widgets Qt5::Network source)
 
 add_executable (CTest ${PROJECT_SOURCE_DIR}/main_test.cpp main_test.h)
 target_link_libraries (CTest ${GTEST_LIBRARIES} Threads::Threads Qt5::Widgets clientmainlib)
@@ -46,5 +57,5 @@ add_executable(client
     main.cpp
 )
 
-target_link_libraries(client PRIVATE clientmainlib Qt5::Widgets)
+target_link_libraries(client PRIVATE clientmainlib Qt5::Widgets Qt5::Network)
 

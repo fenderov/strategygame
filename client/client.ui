@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
-    <height>601</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -16,14 +16,8 @@
     <height>0</height>
    </size>
   </property>
-  <property name="baseSize">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
-  </property>
   <property name="windowTitle">
-   <string>Client</string>
+   <string>strategygame</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -32,6 +26,34 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuGame">
+    <property name="title">
+     <string>&amp;Game</string>
+    </property>
+    <addaction name="local"/>
+    <addaction name="network"/>
+   </widget>
+   <addaction name="menuGame"/>
+  </widget>
+  <action name="local">
+   <property name="text">
+    <string>&amp;Local game</string>
+   </property>
+  </action>
+  <action name="network">
+   <property name="text">
+    <string>&amp;Network game</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
