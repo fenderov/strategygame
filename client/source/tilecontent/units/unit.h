@@ -14,11 +14,12 @@ public:
     void PureDamage(unsigned int damage);
     void Health();
     QPixmap GetImage();
+    unsigned int GetActionPoints() const;
 protected:
     QPixmap _image;
     unsigned char _power;
     unsigned char _cpower;
-    unsigned char _actionPoints;
+    unsigned char _actionpoints;
 };
 
 #endif // UNIT_H

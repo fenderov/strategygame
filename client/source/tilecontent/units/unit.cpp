@@ -2,7 +2,7 @@
 
 Unit::Unit(unsigned char power, unsigned char actionpoints) :
     _power(power),
-    _actionPoints(actionpoints) {
+    _actionpoints(actionpoints) {
     _cpower = _power/2;
 }
 
@@ -16,6 +16,10 @@ unsigned int Unit::GetCombatPower() const{
 
 unsigned int Unit::GetPower() const{
     return _power;
+}
+
+unsigned int Unit::GetActionPoints() const{
+    return _actionpoints;
 }
 
 QPixmap Unit::GetImage(){

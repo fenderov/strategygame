@@ -15,5 +15,8 @@ QString Action::Name(QString action){
     if(action == "browse units") return "Действия отдельных юнитов";
     if(action == "army move") return "Двигаться армией";
     if(action == "army attack") return "Атаковать армией";
+    if(action == "move") return "Двигаться";
+    if(action == "attack") return "Атаковать";
+    if(action == "shoot") return "Выстрелить";
     return "empty name";
 }

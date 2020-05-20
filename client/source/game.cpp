@@ -88,7 +88,6 @@ void Game::HandleAction(const Action& action){
         _highlighted = nullptr;
     }
     else if(action.name == "back"){
-        //TODO: Более кореектная проверка
         if(action.sender != 0){
             _map->UnhighlightAll();
         }
@@ -171,6 +170,65 @@ void Game::HandleAction(const Action& action){
             for(int j = 0; j < _map->GetSize().width(); ++j)
                 if(
                         std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
+                        _highlighted->GetOwner() == _players[_currentplayer] &&
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        )
+                {
+                    _map->GetTile(i, j)->DrawEnabled();
+                }
+        _lastaction = action;
+        AddButton("back", 0, "Назад");
+    }
+    else if(action.name == "move"){
+        _mapstate = MapState::WaitingTargetClick;
+        _actionfield->NewMenu();
+        _highlighted->DrawDisabled();
+        int tile_x = _highlighted->GetX();
+        int tile_y = _highlighted->GetY();
+        for(int i = 0; i < _map->GetSize().height(); ++i)
+            for(int j = 0; j < _map->GetSize().width(); ++j)
+                if(
+                        std::abs(i - tile_x) + std::abs(j - tile_y) > 0 &&
+                        std::abs(i - tile_x) + std::abs(j - tile_y) <= dynamic_cast<Unit*>(_database[action.sender])->GetActionPoints() &&
+                        _highlighted->GetOwner() == _players[_currentplayer] &&
+                        (_map->GetTile(i, j)->IsArmyEmpty() || _map->GetTile(i, j)->GetOwner() != _players[_currentplayer ^ 1])
+                        )
+                {
+                    _map->GetTile(i, j)->DrawEnabled();
+                }
+        _lastaction = action;
+        AddButton("back", 0, "Назад");
+    }
+    else if(action.name == "attack"){
+        _mapstate = MapState::WaitingTargetClick;
+        _actionfield->NewMenu();
+        _highlighted->DrawDisabled();
+        int tile_x = _highlighted->GetX();
+        int tile_y = _highlighted->GetY();
+        for(int i = 0; i < _map->GetSize().height(); ++i)
+            for(int j = 0; j < _map->GetSize().width(); ++j)
+                if(
+                        std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
+                        _highlighted->GetOwner() == _players[_currentplayer] &&
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        )
+                {
+                    _map->GetTile(i, j)->DrawEnabled();
+                }
+        _lastaction = action;
+        AddButton("back", 0, "Назад");
+    }
+    else if(action.name == "shoot"){
+        _mapstate = MapState::WaitingTargetClick;
+        _actionfield->NewMenu();
+        _highlighted->DrawDisabled();
+        int tile_x = _highlighted->GetX();
+        int tile_y = _highlighted->GetY();
+        for(int i = 0; i < _map->GetSize().height(); ++i)
+            for(int j = 0; j < _map->GetSize().width(); ++j)
+                if(
+                        std::abs(i - tile_x) + std::abs(j - tile_y) > 0  &&
+                        std::abs(i - tile_x) + std::abs(j - tile_y) <= 2  &&
                         _highlighted->GetOwner() == _players[_currentplayer] &&
                         _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
                         )

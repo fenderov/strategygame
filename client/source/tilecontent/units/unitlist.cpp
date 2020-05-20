@@ -19,14 +19,26 @@ const unsigned int Swordsman::basepower = 6;
 Archer::Archer():
     Unit(basepower, baseactionpoints) {
     _image  = QPixmap("images/archer.png");
+    QVector<QString> actions;
+    actions.push_back("move");
+    actions.push_back("shoot");
+    SetPossibleActions(actions);
 }
 
 Horseman::Horseman():
     Unit(basepower, baseactionpoints) {
     _image  = QPixmap("images/horseman.png");
+    QVector<QString> actions;
+    actions.push_back("move");
+    actions.push_back("attack");
+    SetPossibleActions(actions);
 }
 
 Swordsman::Swordsman():
     Unit(basepower, baseactionpoints) {
     _image  = QPixmap("images/swordsman.png");
+    QVector<QString> actions;
+    actions.push_back("move");
+    actions.push_back("attack");
+    SetPossibleActions(actions);
 }
