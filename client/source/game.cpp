@@ -8,13 +8,37 @@ Game::Game(QWidget *parent) : Widget(parent)
 
     _database = new Database();
 
+    _players.insert(0, new Player("darkred"));
+    _players.insert(1, new Player("darkblue"));
+
+    _currentplayer = 0;
+
     _map = new Map(this);
     for(int i = 0; i < _map->GetSize().height(); ++i){
         for(int j = 0; j < _map->GetSize().width(); ++j){
             _database->Register(_map->GetTile(i, j));
+            _database->Register(_map->GetTile(i, j)->GetArmy());
             connect(_map->GetTile(i, j), &Tile::clicked, this, &Game::TilePressed);
         }
     }
+
+    _map->GetTile(0, 0)->SetOwner(_players[0]);
+    _map->GetTile(0, 1)->SetOwner(_players[0]);
+    _map->GetTile(1, 0)->SetOwner(_players[0]);
+    _map->GetTile(4, 4)->SetOwner(_players[0]);
+
+    _map->GetTile(4, 4)->SetBuilding(CastleType);
+    _database->Register(_map->GetTile(4, 4)->GetBuilding());
+
+    _map->GetTile(6, 6)->SetOwner(_players[1]);
+    _map->GetTile(8, 9)->SetOwner(_players[1]);
+    _map->GetTile(9, 8)->SetOwner(_players[1]);
+    _map->GetTile(9, 9)->SetOwner(_players[1]);
+
+    _map->GetTile(6, 6)->SetBuilding(CastleType);
+    _database->Register(_map->GetTile(6, 6)->GetBuilding());
+
+    _map->UnhighlightAll();
 
     _actionfield = new ActionField(this);
     AddButton("next turn", 0, "Следующий ход");
@@ -22,7 +46,7 @@ Game::Game(QWidget *parent) : Widget(parent)
     _layout->addWidget(_map);
     _layout->addWidget(_actionfield);
     setLayout(_layout);
-    setStyleSheet("background-color: black;");
+    setStyleSheet("background-color: " + _players[_currentplayer]->GetColor() + ";");
     _map->setMaximumWidth(_map->height());
 
     _mapstate = MapState::WaitingTileClick;
@@ -32,6 +56,10 @@ Game::Game(QWidget *parent) : Widget(parent)
 Game::~Game(){
     if(_map != nullptr)
         delete _map;
+    for(auto player: _players)
+        delete player;
+    if(_actionfield != nullptr)
+        delete _actionfield;
 }
 
 Map* Game::GetMap(){
@@ -50,6 +78,8 @@ void Game::AddButton(QString actionname, int sender, QString buttonname, QVector
 void Game::HandleAction(const Action& action){
     if(action.name == "next turn"){
         _map->TileTick();
+        _currentplayer = _currentplayer ^ 1;
+        setStyleSheet("background-color: " + _players[_currentplayer]->GetColor() + ";");
     }
     else if(action.name == "purge"){
         _actionfield->Purge();
@@ -63,7 +93,10 @@ void Game::HandleAction(const Action& action){
             _map->UnhighlightAll();
         }
         _actionfield->Pop();
-        if(_mapstate = MapState::WaitingTargetClick) _mapstate = MapState::Disabled;
+        if(_mapstate == MapState::WaitingTargetClick){
+            _mapstate = MapState::Disabled;
+            _map->Highlight(_highlighted);
+        }
         if(_actionfield->IsEmpty()) _mapstate = MapState::WaitingTileClick;
     }
     else if(action.name == "browse"){
@@ -109,6 +142,44 @@ void Game::HandleAction(const Action& action){
         AddButton("create unit", action.sender, "Создать всадника", QVector<int>(1, 3));
         AddButton("back", 0, "Назад");
     }
+    else if(action.name == "army move"){
+        _mapstate = MapState::WaitingTargetClick;
+        _actionfield->NewMenu();
+        _highlighted->DrawDisabled();
+        int tile_x = _highlighted->GetX();
+        int tile_y = _highlighted->GetY();
+        for(int i = 0; i < _map->GetSize().height(); ++i)
+            for(int j = 0; j < _map->GetSize().width(); ++j)
+                if(
+                        std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
+                        _highlighted->GetOwner() == _players[_currentplayer] &&
+                        _map->GetTile(i, j)->IsArmyEmpty()
+                        )
+                {
+                    _map->GetTile(i, j)->DrawEnabled();
+                }
+        _lastaction = action;
+        AddButton("back", 0, "Назад");
+    }
+    else if(action.name == "army attack"){
+        _mapstate = MapState::WaitingTargetClick;
+        _actionfield->NewMenu();
+        _highlighted->DrawDisabled();
+        int tile_x = _highlighted->GetX();
+        int tile_y = _highlighted->GetY();
+        for(int i = 0; i < _map->GetSize().height(); ++i)
+            for(int j = 0; j < _map->GetSize().width(); ++j)
+                if(
+                        std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
+                        _highlighted->GetOwner() == _players[_currentplayer] &&
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        )
+                {
+                    _map->GetTile(i, j)->DrawEnabled();
+                }
+        _lastaction = action;
+        AddButton("back", 0, "Назад");
+    }
     else HandleAction(_database->GetById(action.sender)->HandleAction(action));
 }
 
@@ -120,13 +191,36 @@ void Game::ActionButtonPressed(){
 
 void Game::TilePressed(){
     Tile* clickedtile = qobject_cast<Tile*>(sender());
+    if(!clickedtile->IsEnabled()) return;
     if(_mapstate == MapState::WaitingTileClick){
+        if(clickedtile->GetOwner() != _players[_currentplayer]) return;
         _mapstate = MapState::Disabled;
         _highlighted = clickedtile;
         _map->Highlight(clickedtile);
         BrowseTileActions(clickedtile);
     } else if(_mapstate == MapState::WaitingTargetClick){
-        //
+        if(_lastaction.name == "army move"){
+            Army* a1 = clickedtile->GetArmy();
+            Army* a2 = _highlighted->GetArmy();
+            clickedtile->SetArmy(a2);
+            _highlighted->SetArmy(a1);
+            clickedtile->SetOwner(_highlighted->GetOwner());
+        }
+        if(_lastaction.name == "army attack"){
+            Army* a1 = clickedtile->GetArmy();
+            Army* a2 = _highlighted->GetArmy();
+            int p1 =a1->GetPower();
+            int p2 =a2->GetPower();
+            if(p1 > p2){
+                p1 += p1 - p2;
+            } else {
+                p2 += p2 - p1;
+            }
+            a1->Damage((p1 + 1) / 2);
+            a2->Damage((p2 + 1) / 2);
+        }
+        Action naction(0, "purge");
+        HandleAction(naction);
         return;
     } else {
         return;

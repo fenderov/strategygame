@@ -14,9 +14,12 @@ public:
     unsigned int GetPower() const;
     void Unite();
     void Divide();
+    void Damage(int power);
+    Action HandleAction(const Action &action);
     QPixmap GetImage();
     ~Army();
 private:
+    bool _united;
     QVector<Unit*> _units;
 };
 

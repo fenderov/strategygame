@@ -3,13 +3,17 @@
 
 #include "fraction.h"
 
+#include <QString>
+
 class Player
 {
 public:
-    Player();
+    Player(QString id);
     void CangeMoney(int value);
     FractionType getFraction();
+    QString GetColor() const;
 private:
+    const QString _color;
     unsigned int _score;
     unsigned int _money;
     FractionType _fraction;

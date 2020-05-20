@@ -1,7 +1,7 @@
 #include "army.h"
 
-Army::Army(){
-
+Army::Army() : _united(false) {
+    Divide();
 }
 
 Army::~Army(){
@@ -23,21 +23,36 @@ unsigned int Army::GetPower() const{
     for(int i = 0; i < _units.size(); ++i){
         power += _units[i]->GetCombatPower();
     }
+    return power;
 }
 
 void Army::Unite(){
     QVector<QString> actions;
-    actions.push_back("move");
-    actions.push_back("attack");
+    actions.push_back("army move");
+    actions.push_back("army attack");
     actions.push_back("divide");
     SetPossibleActions(actions);
+    _united = true;
 }
 
 void Army::Divide(){
     QVector<QString> actions;
-    actions.push_back("browseunits");
+    actions.push_back("browse units");
     actions.push_back("unite");
     SetPossibleActions(actions);
+    _united = false;
+}
+
+Action Army::HandleAction(const Action &action){
+    if(action.name == "unite"){
+        Unite();
+        return Action(id, "purge");
+    }
+    if(action.name == "divide"){
+        Divide();
+        return Action(id, "purge");
+    }
+    return Action(id, "purge");
 }
 
 QPixmap Army::GetImage(){
@@ -73,4 +88,14 @@ QPixmap Army::GetImage(){
         painter.drawPixmap(32, 32, 16, 16, uimage);
     }
     return armypixmap;
+}
+
+void Army::Damage(int power){
+    while(power >= _units.front()->GetPower()){
+        power -= _units.front()->GetPower();
+        delete _units.front();
+        _units.pop_front();
+        if(_units.empty()) return;
+    }
+    _units.front()->PureDamage(power);
 }

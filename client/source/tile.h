@@ -24,6 +24,7 @@ public:
     void SetBuilding(BuildingType type);
     void ProduceMoney(unsigned char income);
     Army* GetArmy() const;
+    void SetArmy(Army* army);
     Building* GetBuilding() const;
     bool IsArmyEmpty() const;
     bool BuildingExists() const;
@@ -37,14 +38,22 @@ public:
     void Tick();
     void DrawDisabled();
     void DrawEnabled();
+    bool IsEnabled() const;
+    int GetX() const;
+    int GetY() const;
+    int SetX(int x);
+    int SetY(int y);
     ~Tile();
 private:
     void Draw(const QPixmap& img);
     QPixmap _image;
     QPixmap _imagedisabled;
+    bool _enabled;
     Army* _army;
     Building* _building;
     Player* _owner;
+    int _x;
+    int _y;
 };
 
 #endif // TILE_H

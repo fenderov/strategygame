@@ -5,6 +5,8 @@
 Tile::Tile(QWidget *parent) : Button(parent){
     _building = nullptr;
     _army = new Army;
+    _owner = nullptr;
+    _enabled = true;
     setStyleSheet("background-color: white;");
     int imagen = qrand()%4 + 1;
     if(imagen == 1){
@@ -52,6 +54,11 @@ Army* Tile::GetArmy() const{
     return _army;
 }
 
+void Tile::SetArmy(Army* army) {
+    _army = army;
+}
+
+
 Building* Tile::GetBuilding() const{
     return _building;
 }
@@ -94,15 +101,24 @@ void Tile::Unhighlight(){
     setStyleSheet("background-color: white");
 }
 
+bool Tile::IsEnabled() const{
+    return _enabled;
+}
+
 void Tile::DrawDisabled(){
     Draw(_imagedisabled);
+    _enabled = false;
 }
 
 void Tile::DrawEnabled(){
     Draw(_image);
+    _enabled = true;
 }
 
 void Tile::Draw(const QPixmap& img){
+    if(_owner != nullptr){
+        setStyleSheet("background-color: " + _owner->GetColor() + ";");
+    }
     QPixmap tilepixmap = img;
 
     QPixmap bimage;
@@ -117,4 +133,21 @@ void Tile::Draw(const QPixmap& img){
     icon.addPixmap(tilepixmap);
     setIcon(icon);
     setIconSize(QSize(64, 64));
+}
+
+
+int Tile::GetX() const{
+    return _x;
+}
+
+int Tile::GetY() const{
+    return _y;
+}
+
+int Tile::SetX(int x){
+    _x = x;
+}
+
+int Tile::SetY(int y){
+    _y = y;
 }

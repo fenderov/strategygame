@@ -15,6 +15,8 @@ Map::Map(QWidget *parent) : Widget(parent){
             tile->setFixedSize(70, 70);
             tile->DrawEnabled();
             tile->show();
+            tile->SetX(i);
+            tile->SetY(j);
         }
         _tiles.push_back(temp);
     }
@@ -28,6 +30,8 @@ void Map::Highlight(Tile *tile){
         for(auto curtile: vec)
             if(tile != curtile)
                 curtile->DrawDisabled();
+            else
+                curtile->DrawEnabled();
 }
 
 void Map::UnhighlightAll(){
@@ -51,7 +55,9 @@ void Map::TileTick(){
 }
 
 Tile* Map::GetTile(int x, int y){
-    return _tiles[x][y];
+    if(x >= 0 && x < _size.height() && y >= 0 && y < _size.width())
+        return _tiles[x][y];
+    return nullptr;
 }
 
 QSize Map::GetSize() const{
@@ -70,11 +76,4 @@ void Map::resizeEvent(QResizeEvent *event){
     int width = event->size().width();
     int oldwidth = event->oldSize().width();
     setMaximumWidth(height);
-
-    //Здесь будет настройка дизайна карты.
-    //По задумке она должна быть всегда квадратной.
-
-    //setMaximumHeight(width);
-    //setMaximumWidth(height);
-    //setMaximumHeight(5000);
 }
