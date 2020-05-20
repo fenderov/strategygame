@@ -189,7 +189,7 @@ void Game::HandleAction(const Action& action){
             for(int j = 0; j < _map->GetSize().width(); ++j)
                 if(
                         std::abs(i - tile_x) + std::abs(j - tile_y) > 0 &&
-                        std::abs(i - tile_x) + std::abs(j - tile_y) <= dynamic_cast<Unit*>(_database[action.sender])->GetActionPoints() &&
+                        std::abs(i - tile_x) + std::abs(j - tile_y) <= dynamic_cast<Unit*>(_database->GetById(action.sender))->GetActionPoints() &&
                         _highlighted->GetOwner() == _players[_currentplayer] &&
                         (_map->GetTile(i, j)->IsArmyEmpty() || _map->GetTile(i, j)->GetOwner() != _players[_currentplayer ^ 1])
                         )
