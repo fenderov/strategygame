@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QMessageBox>
 #include <QFontDatabase>
 
 #include "map.h"
@@ -34,11 +35,13 @@ private:
     QMap<int, Player*> _players;
     int _currentplayer;
     Action _lastaction;
+    bool _buildingcreated;
 
     void AddButton(QString actionname, int sender, QString buttonname = "sample", QVector<int> params = QVector<int>());
     void HandleAction(const Action& action);
     void BrowseActions(int id);
     void BrowseTileActions(Tile* tile);
+    void CheckWin();
 public slots:
     void ActionButtonPressed();
     void TilePressed();

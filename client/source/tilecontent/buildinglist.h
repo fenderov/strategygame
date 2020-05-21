@@ -20,6 +20,8 @@ public:
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
     Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
     const unsigned char _income;
 };
@@ -30,6 +32,8 @@ public:
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
     Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 };
 
 class Mine : public Building {
@@ -38,6 +42,8 @@ public:
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
     Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
     const unsigned char _income;
 };
@@ -48,6 +54,8 @@ public:
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
     Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
 };
 

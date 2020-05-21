@@ -12,6 +12,7 @@ Game::Game(QWidget *parent) : Widget(parent)
     _players.insert(1, new Player("darkblue"));
 
     _currentplayer = 0;
+    _buildingcreated = false;
 
     _map = new Map(this);
     for(int i = 0; i < _map->GetSize().height(); ++i){
@@ -22,21 +23,59 @@ Game::Game(QWidget *parent) : Widget(parent)
         }
     }
 
-    _map->GetTile(0, 0)->SetOwner(_players[0]);
-    _map->GetTile(0, 1)->SetOwner(_players[0]);
-    _map->GetTile(1, 0)->SetOwner(_players[0]);
-    _map->GetTile(4, 4)->SetOwner(_players[0]);
+    //prepare demo game:
 
-    _map->GetTile(4, 4)->SetBuilding(CastleType);
-    _database->Register(_map->GetTile(4, 4)->GetBuilding());
+    for(int i = 0; i < 5; ++i)
+        for(int j = 0; j < 5; ++j)
+            _map->GetTile(i,j)->SetOwner(_players[0]);
 
-    _map->GetTile(6, 6)->SetOwner(_players[1]);
-    _map->GetTile(8, 9)->SetOwner(_players[1]);
-    _map->GetTile(9, 8)->SetOwner(_players[1]);
-    _map->GetTile(9, 9)->SetOwner(_players[1]);
+    _map->GetTile(4, 4)->SetOwner(nullptr);
+
+    for(int i = 9; i > 4; --i)
+        for(int j = 9; j > 4; --j)
+            _map->GetTile(i,j)->SetOwner(_players[1]);
+
+    _map->GetTile(5, 5)->SetOwner(nullptr);
+
+    _map->GetTile(3, 3)->SetBuilding(CastleType);
+    _database->Register(_map->GetTile(3, 3)->GetBuilding());
 
     _map->GetTile(6, 6)->SetBuilding(CastleType);
     _database->Register(_map->GetTile(6, 6)->GetBuilding());
+
+    _map->GetTile(1, 3)->SetBuilding(BarracksType);
+    _database->Register(_map->GetTile(1, 3)->GetBuilding());
+
+    _map->GetTile(3, 1)->SetBuilding(BarracksType);
+    _database->Register(_map->GetTile(3, 1)->GetBuilding());
+
+    _map->GetTile(8, 6)->SetBuilding(BarracksType);
+    _database->Register(_map->GetTile(8, 6)->GetBuilding());
+
+    _map->GetTile(6, 8)->SetBuilding(BarracksType);
+    _database->Register(_map->GetTile(6, 8)->GetBuilding());
+
+    _map->GetTile(3, 4)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(3, 4)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(4, 3)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(4, 3)->GetArmy()->AddUnit(new Swordsman());
+
+    _map->GetTile(6, 5)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(6, 5)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(5, 6)->GetArmy()->AddUnit(new Swordsman());
+    _map->GetTile(5, 6)->GetArmy()->AddUnit(new Swordsman());
+
+    _map->GetTile(2, 4)->GetArmy()->AddUnit(new Horseman());
+    _map->GetTile(4, 2)->GetArmy()->AddUnit(new Horseman());
+
+    _map->GetTile(7, 5)->GetArmy()->AddUnit(new Horseman());
+    _map->GetTile(5, 7)->GetArmy()->AddUnit(new Horseman());
+
+    _map->GetTile(2, 3)->GetArmy()->AddUnit(new Archer());
+    _map->GetTile(3, 2)->GetArmy()->AddUnit(new Archer());
+
+    _map->GetTile(6, 7)->GetArmy()->AddUnit(new Archer());
+    _map->GetTile(7, 6)->GetArmy()->AddUnit(new Archer());
 
     _map->UnhighlightAll();
 
@@ -75,10 +114,22 @@ void Game::AddButton(QString actionname, int sender, QString buttonname, QVector
     _actionfield->AddButton(button);
 }
 
+void Game::CheckWin(){
+    if(_map->GetTile(7,7)->GetOwner() == _map->GetTile(2, 2)->GetOwner()){
+        QMessageBox mbox;
+        mbox.setWindowTitle("Победа!");
+        if(_map->GetTile(7,7)->GetOwner()->GetColor() == "darkred") mbox.setText("Красный игрок победил");
+        else mbox.setText("Синий игрок победил");
+        mbox.exec();
+        close();
+    }
+}
+
 void Game::HandleAction(const Action& action){
     if(action.name == "next turn"){
         _map->TileTick();
         _currentplayer = _currentplayer ^ 1;
+        _buildingcreated = false;
         setStyleSheet("background-color: " + _players[_currentplayer]->GetColor() + ";");
     }
     else if(action.name == "purge"){
@@ -115,10 +166,11 @@ void Game::HandleAction(const Action& action){
         _actionfield->NewMenu();
         AddButton("create building", action.sender, "Создать казармы", QVector<int>(1, 1));
         AddButton("create building", action.sender, "Создать форт", QVector<int>(1, 2));
-        AddButton("create building", action.sender, "Создать шахту", QVector<int>(1, 3));
+        AddButton("create building", action.sender, "Создать окоп", QVector<int>(1, 3));
         AddButton("back", 0, "Назад");
     }
     else if(action.name == "create building"){
+        _buildingcreated = true;
         Tile* tile = dynamic_cast<Tile*>(_database->GetById(action.sender));
         int concrete = action.params[0];
         if(concrete == 1){
@@ -171,7 +223,8 @@ void Game::HandleAction(const Action& action){
                 if(
                         std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
                         _highlighted->GetOwner() == _players[_currentplayer] &&
-                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1] &&
+                        !_map->GetTile(i, j)->GetArmy()->IsEmpty()
                         )
                 {
                     _map->GetTile(i, j)->DrawEnabled();
@@ -228,7 +281,8 @@ void Game::HandleAction(const Action& action){
                 if(
                         std::abs(i - tile_x) + std::abs(j - tile_y) == 1 &&
                         _highlighted->GetOwner() == _players[_currentplayer] &&
-                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1] &&
+                        !_map->GetTile(i, j)->GetArmy()->IsEmpty()
                         )
                 {
                     _map->GetTile(i, j)->DrawEnabled();
@@ -248,7 +302,8 @@ void Game::HandleAction(const Action& action){
                         std::abs(i - tile_x) + std::abs(j - tile_y) > 0  &&
                         std::abs(i - tile_x) + std::abs(j - tile_y) <= 2  &&
                         _highlighted->GetOwner() == _players[_currentplayer] &&
-                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1]
+                        _map->GetTile(i, j)->GetOwner() == _players[_currentplayer ^ 1] &&
+                        !_map->GetTile(i, j)->GetArmy()->IsEmpty()
                         )
                 {
                     _map->GetTile(i, j)->DrawEnabled();
@@ -282,13 +337,16 @@ void Game::TilePressed(){
             clickedtile->SetArmy(a2);
             _highlighted->SetArmy(a1);
             clickedtile->SetOwner(_highlighted->GetOwner());
+            CheckWin();
         }
         if(_lastaction.name == "army attack"){
             Army* a1 = clickedtile->GetArmy();
             Army* a2 = _highlighted->GetArmy();
             a2->SetActed();
             int p1 =a1->GetPower();
+            p1 *= _highlighted->GetBuilding()->GetDefenceBonus();
             int p2 =a2->GetPower();
+            p2 *= 1.2 * _highlighted->GetBuilding()->GetAttackBonus();
             if(p1 > p2){
                 p1 += p1 - p2;
             } else {
@@ -305,6 +363,7 @@ void Game::TilePressed(){
             a2->RemoveUnit(unit);
             a1->AddUnit(unit);
             clickedtile->SetOwner(_highlighted->GetOwner());
+            CheckWin();
         }
         if(_lastaction.name == "attack"){
             Unit* unit = dynamic_cast<Unit*>(_database->GetById(_lastaction.sender));
@@ -312,7 +371,9 @@ void Game::TilePressed(){
             Army* a2 = _highlighted->GetArmy();
             Army* a1 = clickedtile->GetArmy();
             int p1 = a1->GetPower();
+            p1 *= _highlighted->GetBuilding()->GetDefenceBonus();
             int p2 = unit->GetCombatPower();
+            p2 *= _highlighted->GetBuilding()->GetAttackBonus();
             if(p1 > p2){
                 p1 += p1 - p2;
             } else {
@@ -329,7 +390,9 @@ void Game::TilePressed(){
             unit->SetActed();
             Army* a1 = clickedtile->GetArmy();
             int p1 = a1->GetPower();
+            p1 *= _highlighted->GetBuilding()->GetDefenceBonus();
             int p2 = unit->GetPower();
+            p2 *= _highlighted->GetBuilding()->GetAttackBonus();
             if(p1 > p2){
                 p1 += p1 - p2;
             } else {
@@ -357,7 +420,7 @@ void Game::BrowseTileActions(Tile *tile){
     _actionfield->NewMenu();
     if(tile->BuildingExists()){
         AddButton("browse", tile->GetBuilding()->id, "Действия здания");
-    } else{
+    } else if(!_buildingcreated){
         AddButton("browse create building", tile->id, "Создать здание");
     }
     if(!tile->IsArmyEmpty()){

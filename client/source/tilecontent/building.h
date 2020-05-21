@@ -12,8 +12,8 @@ public:
     explicit Building();
     virtual Unit* GetProducedUnits() = 0;
     virtual unsigned char GetProducedMoney() = 0;
-    unsigned char GetDefenceBonus() const;
-    unsigned char GetAttackBonus() const;
+    virtual float GetDefenceBonus() const = 0;
+    virtual float GetAttackBonus() const = 0;
     bool PureDamage(unsigned char damage);
     ~Building();
     QPixmap GetImage();

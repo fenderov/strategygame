@@ -4,6 +4,7 @@ Unit::Unit(unsigned char power, unsigned char actionpoints) :
     _power(power),
     _actionpoints(actionpoints) {
     _cpower = _power/2;
+    _canact = true;
 }
 
 void Unit::PureDamage(unsigned int damage){

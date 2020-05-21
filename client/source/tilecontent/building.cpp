@@ -4,11 +4,11 @@ Building::Building(){
 
 }
 
-unsigned char Building::GetDefenceBonus() const{
+float Building::GetDefenceBonus() const{
     return _defencebonus;
 }
 
-unsigned char Building::GetAttackBonus() const{
+float Building::GetAttackBonus() const{
     return _attackbonus;
 }
 

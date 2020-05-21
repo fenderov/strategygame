@@ -45,6 +45,13 @@ Action Castle::HandleAction(const Action& action){
     return Action(id, "purge");
 }
 
+float Castle::GetDefenceBonus() const{
+    return 1.4;
+}
+
+float Castle::GetAttackBonus() const{
+    return 1.1;
+}
 
 Unit* Barracks::GetProducedUnits(){
     return UnitCreationTick();
@@ -70,6 +77,15 @@ Action Barracks::HandleAction(const Action& action){
     return Action(id, "purge");
 }
 
+float Barracks::GetDefenceBonus() const{
+    return 1.2;
+}
+
+float Barracks::GetAttackBonus() const{
+    return 1;
+}
+
+
 Unit* Mine::GetProducedUnits(){
     return nullptr;
 }
@@ -83,6 +99,15 @@ Action Mine::HandleAction(const Action& action){
     return Action(id, "purge");
 }
 
+float Mine::GetDefenceBonus() const{
+    return 1;
+}
+
+float Mine::GetAttackBonus() const{
+    return 1.4;
+}
+
+
 Unit* Fort::GetProducedUnits(){
     return nullptr;
 }
@@ -95,3 +120,12 @@ Action Fort::HandleAction(const Action& action){
     //error
     return Action(id, "purge");
 }
+
+float Fort::GetDefenceBonus() const{
+    return 1.4;
+}
+
+float Fort::GetAttackBonus() const{
+    return 0.9;
+}
+
