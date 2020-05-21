@@ -3,7 +3,7 @@
 const std::map<UnitType, unsigned char> Archer::bonuses = {};
 const unsigned int Archer::buildtime = 3;
 const unsigned int Archer::baseactionpoints = 1;
-const unsigned int Archer::basepower = 6;
+const unsigned int Archer::basepower = 4;
 
 const std::map<UnitType, unsigned char> Horseman::bonuses = {};
 const unsigned int Horseman::buildtime = 4;
@@ -25,6 +25,10 @@ Archer::Archer():
     SetPossibleActions(actions);
 }
 
+unsigned int Archer::GetType() const{
+    return 0;
+}
+
 Horseman::Horseman():
     Unit(basepower, baseactionpoints) {
     _image  = QPixmap("images/horseman.png");
@@ -34,6 +38,10 @@ Horseman::Horseman():
     SetPossibleActions(actions);
 }
 
+unsigned int Horseman::GetType() const{
+    return 1;
+}
+
 Swordsman::Swordsman():
     Unit(basepower, baseactionpoints) {
     _image  = QPixmap("images/swordsman.png");
@@ -41,4 +49,8 @@ Swordsman::Swordsman():
     actions.push_back("move");
     actions.push_back("attack");
     SetPossibleActions(actions);
+}
+
+unsigned int Swordsman::GetType() const{
+    return 2;
 }

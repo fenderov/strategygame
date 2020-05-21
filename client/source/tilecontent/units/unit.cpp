@@ -25,3 +25,15 @@ unsigned int Unit::GetActionPoints() const{
 QPixmap Unit::GetImage(){
     return _image;
 }
+
+bool Unit::CanAct() const{
+    return _canact;
+}
+
+void Unit::Refresh(){
+    _canact = true;
+}
+
+void Unit::SetActed(){
+    _canact = false;
+}

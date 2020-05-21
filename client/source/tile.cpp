@@ -38,6 +38,7 @@ void Tile::Tick(){
         if(unit) _army->AddUnit(unit);
         //_owner->CangeMoney(_building->GetProducedMoney());
     }
+    _army->Refresh();
     DrawEnabled();
 }
 

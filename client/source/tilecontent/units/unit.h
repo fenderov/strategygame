@@ -15,7 +15,12 @@ public:
     void Health();
     QPixmap GetImage();
     unsigned int GetActionPoints() const;
+    virtual unsigned int GetType() const = 0;
+    bool CanAct() const;
+    void SetActed();
+    void Refresh();
 protected:
+    bool _canact;
     QPixmap _image;
     unsigned char _power;
     unsigned char _cpower;

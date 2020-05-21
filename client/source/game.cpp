@@ -179,6 +179,24 @@ void Game::HandleAction(const Action& action){
         _lastaction = action;
         AddButton("back", 0, "Назад");
     }
+    else if(action.name == "browse units"){
+        _actionfield->NewMenu();
+        Army* army = _highlighted->GetArmy();
+        for(int i = 0; i < army->GetUnits().size(); ++i){
+            _database->Register(army->GetUnits()[i]);
+            if(!army->GetUnits()[i]->CanAct()) continue;
+            if(army->GetUnits()[i]->GetType() == 0){
+                AddButton("browse", army->GetUnits()[i]->id, "Лучник");
+            }
+            if(army->GetUnits()[i]->GetType() == 1){
+                AddButton("browse", army->GetUnits()[i]->id, "Всадник");
+            }
+            if(army->GetUnits()[i]->GetType() == 2){
+                AddButton("browse", army->GetUnits()[i]->id, "Мечник");
+            }
+        }
+        AddButton("back", 0, "Назад");
+    }
     else if(action.name == "move"){
         _mapstate = MapState::WaitingTargetClick;
         _actionfield->NewMenu();
@@ -260,6 +278,7 @@ void Game::TilePressed(){
         if(_lastaction.name == "army move"){
             Army* a1 = clickedtile->GetArmy();
             Army* a2 = _highlighted->GetArmy();
+            a2->SetActed();
             clickedtile->SetArmy(a2);
             _highlighted->SetArmy(a1);
             clickedtile->SetOwner(_highlighted->GetOwner());
@@ -267,6 +286,7 @@ void Game::TilePressed(){
         if(_lastaction.name == "army attack"){
             Army* a1 = clickedtile->GetArmy();
             Army* a2 = _highlighted->GetArmy();
+            a2->SetActed();
             int p1 =a1->GetPower();
             int p2 =a2->GetPower();
             if(p1 > p2){
@@ -274,8 +294,48 @@ void Game::TilePressed(){
             } else {
                 p2 += p2 - p1;
             }
-            a1->Damage((p1 + 1) / 2);
-            a2->Damage((p2 + 1) / 2);
+            a1->Damage((p2 + 1) / 2);
+            a2->Damage((p1 + 1) / 2);
+        }
+        if(_lastaction.name == "move"){
+            Unit* unit = dynamic_cast<Unit*>(_database->GetById(_lastaction.sender));
+            unit->SetActed();
+            Army* a1 = clickedtile->GetArmy();
+            Army* a2 = _highlighted->GetArmy();
+            a2->RemoveUnit(unit);
+            a1->AddUnit(unit);
+            clickedtile->SetOwner(_highlighted->GetOwner());
+        }
+        if(_lastaction.name == "attack"){
+            Unit* unit = dynamic_cast<Unit*>(_database->GetById(_lastaction.sender));
+            unit->SetActed();
+            Army* a2 = _highlighted->GetArmy();
+            Army* a1 = clickedtile->GetArmy();
+            int p1 = a1->GetPower();
+            int p2 = unit->GetCombatPower();
+            if(p1 > p2){
+                p1 += p1 - p2;
+            } else {
+                p2 += p2 - p1;
+            }
+            a1->Damage((p2 + 1) / 2);
+            unit->PureDamage((p1 + 1) / 2);
+            if(unit->GetPower() <= 0){
+                a2->RemoveUnit(unit);
+            }
+        }
+        if(_lastaction.name == "shoot"){
+            Unit* unit = dynamic_cast<Unit*>(_database->GetById(_lastaction.sender));
+            unit->SetActed();
+            Army* a1 = clickedtile->GetArmy();
+            int p1 = a1->GetPower();
+            int p2 = unit->GetPower();
+            if(p1 > p2){
+                p1 += p1 - p2;
+            } else {
+                p2 += p2 - p1;
+            }
+            a1->Damage((p2 + 1) / 2);
         }
         Action naction(0, "purge");
         HandleAction(naction);
@@ -301,92 +361,7 @@ void Game::BrowseTileActions(Tile *tile){
         AddButton("browse create building", tile->id, "Создать здание");
     }
     if(!tile->IsArmyEmpty()){
-        AddButton("browse", tile->GetArmy()->id, "Действия юнитов");
+        if(tile->GetArmy()->CanAct()) AddButton("browse", tile->GetArmy()->id, "Действия юнитов");
     }
     AddButton("back", tile->id, "Назад");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Эта часть кода временно заморожена
-
-/*void Game::BrowseActions(){
-    _actionfield->NewMenu();
-    ActionButton *current;
-    current = _actionfield->AddAction("Закончить ход");
-    connect(current, &ActionButton::clicked, this, &Game::EndTurn);
-}
-
-void Game::BrowseTileActions(){
-    _actionfield->NewMenu();
-    ActionButton *current;
-    if(sender()->IsArmyEmpty()){
-        current = _actionfield->AddAction("Действия армии");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseActions(sender->GetArmy())));
-    }
-    if(sender->BuildingExists()){
-        current = _actionfield->AddAction("Действия здания");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseActions(sender->GetBuilding())));
-    }else{
-        current = _actionfield->AddAction("Построить здание");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseCreateBuildingActions(sender)));
-    }
-}
-
-void Game::BrowseActions(Tile* sender){
-    _actionfield->NewMenu();
-    ActionButton *current;
-    if(!sender->IsArmyEmpty()){
-        current = _actionfield->AddAction("Действия армии");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseActions(sender->GetArmy())));
-    }
-    if(sender->BuildingExists()){
-        current = _actionfield->AddAction("Действия здания");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseActions(sender->GetBuilding())));
-    }else{
-        current = _actionfield->AddAction("Построить здание");
-        connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseCreateBuildingActions(sender)));
-    }
-}
-
-void Game::BrowseCreateBuildingActions(Tile *sender){
-    _actionfield->NewMenu();
-    ActionButton *current;
-
-    //1. Добавить провеку на деньги.
-    //2. Замок игроку создать нельзя.
-
-    current = _actionfield->AddAction("Создать казармы");
-    connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseCreateBuilding(sender, BuildingType::BarracksType)));
-    current = _actionfield->AddAction("Создать шахту");
-    connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseCreateBuilding(sender, BuildingType::MineType)));
-    current = _actionfield->AddAction("Создать форт");
-    connect(current, SIGNAL(ActionButton::clicked()), this, SLOT(BrowseCreateBuilding(sender, BuildingType::FortType)));
-}
-
-void Game::BrowseCreateBuilding(Tile *sender, BuildingType type){
-    _actionfield->Purge();
-    sender->CreateBuilding(type);
-}*/

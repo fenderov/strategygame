@@ -10,6 +10,7 @@ class Army : public Object
 public:
     Army();
     void AddUnit(Unit* unit);
+    void RemoveUnit(Unit* unit);
     bool IsEmpty() const;
     unsigned int GetPower() const;
     void Unite();
@@ -17,9 +18,14 @@ public:
     void Damage(int power);
     Action HandleAction(const Action &action);
     QPixmap GetImage();
+    const QVector<Unit*>& GetUnits() const;
+    bool CanAct() const;
+    void Refresh();
+    void SetActed();
     ~Army();
 private:
     bool _united;
+    bool _canact;
     QVector<Unit*> _units;
 };
 

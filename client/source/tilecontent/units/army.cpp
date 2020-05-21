@@ -2,6 +2,7 @@
 
 Army::Army() : _united(false) {
     Divide();
+    _canact = true;
 }
 
 Army::~Army(){
@@ -16,6 +17,10 @@ bool Army::IsEmpty() const{
 
 void Army::AddUnit(Unit *unit){
     _units.push_back(unit);
+}
+
+void Army::RemoveUnit(Unit *unit){
+    _units.remove(_units.indexOf(unit));
 }
 
 unsigned int Army::GetPower() const{
@@ -33,6 +38,7 @@ void Army::Unite(){
     actions.push_back("divide");
     SetPossibleActions(actions);
     _united = true;
+    SetActed();
 }
 
 void Army::Divide(){
@@ -41,6 +47,7 @@ void Army::Divide(){
     actions.push_back("unite");
     SetPossibleActions(actions);
     _united = false;
+    SetActed();
 }
 
 Action Army::HandleAction(const Action &action){
@@ -98,4 +105,23 @@ void Army::Damage(int power){
         if(_units.empty()) return;
     }
     _units.front()->PureDamage(power);
+}
+
+const QVector<Unit*>& Army::GetUnits() const{
+    return _units;
+}
+
+bool Army::CanAct() const{
+    return _canact;
+}
+
+void Army::Refresh(){
+    _canact = true;
+    for(int i = 0; i < _units.size(); ++i){
+        _units[i]->Refresh();
+    }
+}
+
+void Army::SetActed(){
+    _canact = false;
 }
