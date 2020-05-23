@@ -19,6 +19,7 @@ public:
     static const unsigned int buildtime;
     static const unsigned int baseactionpoints;
     static const unsigned int basepower;
+    unsigned int GetType() const;
 };
 
 class Swordsman : public Unit{
@@ -28,6 +29,7 @@ public:
     static const unsigned int buildtime;
     static const unsigned int baseactionpoints;
     static const unsigned int basepower;
+    unsigned int GetType() const;
 };
 
 class Horseman : public Unit{
@@ -37,5 +39,6 @@ public:
     static const unsigned int buildtime;
     static const unsigned int baseactionpoints;
     static const unsigned int basepower;
+    unsigned int GetType() const;
 };
 #endif // UNITLIST_H

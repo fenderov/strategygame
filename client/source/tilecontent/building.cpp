@@ -1,14 +1,14 @@
 #include "building.h"
 
-Building::Building(QWidget *parent) : QWidget(parent){
+Building::Building(){
 
 }
 
-unsigned char Building::GetDefenceBonus() const{
+float Building::GetDefenceBonus() const{
     return _defencebonus;
 }
 
-unsigned char Building::GetAttackBonus() const{
+float Building::GetAttackBonus() const{
     return _attackbonus;
 }
 
@@ -16,6 +16,10 @@ bool Building::PureDamage(unsigned char damage){
     _health -= damage;
     if(_health <= 0) return true;
     else return false;
+}
+
+QPixmap Building::GetImage(){
+    return _image;
 }
 
 Building::~Building(){

@@ -15,39 +15,47 @@ enum BuildingType {
 };
 
 class Castle : public Building, public UnitFactory {
-    Q_OBJECT
 public:
-    explicit Castle(QWidget *parent = nullptr);
+    Castle();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
     const unsigned char _income;
 };
 
 class Barracks : public Building, public UnitFactory {
-    Q_OBJECT
 public:
-    explicit Barracks(QWidget *parent = nullptr);
+    Barracks();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 };
 
 class Mine : public Building {
-    Q_OBJECT
 public:
-    explicit Mine(QWidget *parent = nullptr);
+    Mine();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
     const unsigned char _income;
 };
 
 class Fort : public Building {
-    Q_OBJECT
 public:
-    explicit Fort(QWidget *parent = nullptr);
+    Fort();
     Unit* GetProducedUnits() override;
     unsigned char GetProducedMoney() override;
+    Action HandleAction(const Action& action) override;
+    float GetDefenceBonus() const;
+    float GetAttackBonus() const;
 private:
 };
 

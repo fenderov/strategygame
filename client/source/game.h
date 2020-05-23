@@ -2,36 +2,49 @@
 #define GAME_H
 
 #include <QWidget>
-#include <QStyleOption>
-#include <QPainter>
+#include <QHBoxLayout>
+#include <QMessageBox>
+#include <QFontDatabase>
 
 #include "map.h"
-//#include "actionfield.h"
+#include "actionfield.h"
+#include "database.h"
+#include "widget.h"
 
-class Game: public QWidget
+
+enum MapState{
+    WaitingTileClick,
+    Disabled,
+    WaitingTargetClick
+};
+
+class Game: public Widget
 {
     Q_OBJECT
 public:
     explicit Game(QWidget *parent = nullptr);
     ~Game();
     Map* GetMap();
-    //void BrowseActions();
-protected:
-    void paintEvent(QPaintEvent *);
 private:
+    Database* _database;
     Map* _map;
-    //ActionField* _actionfield;
+    ActionField* _actionfield;
+    MapState _mapstate;
+    Action* _handlingaction;
+    Tile* _highlighted;
+    QMap<int, Player*> _players;
+    int _currentplayer;
+    Action _lastaction;
+    bool _buildingcreated;
+
+    void AddButton(QString actionname, int sender, QString buttonname = "sample", QVector<int> params = QVector<int>());
+    void HandleAction(const Action& action);
+    void BrowseActions(int id);
+    void BrowseTileActions(Tile* tile);
+    void CheckWin();
 public slots:
-    /*void EndTurn();
-    void BrowseTileActions();
-    void BrowseTileCreateBuildingActions();
-    void BrowseBuildingActions();
-    void BrowseBuildingCreateUnitActions();
-    void BrowseArmyUnitedActions();
-    void BrowseArmyReunitedActions();
-    void BrowseUnitActions();
-    void BrowseUnitAttackActions();
-    void BrowseUnitMoveActions();*/
+    void ActionButtonPressed();
+    void TilePressed();
 };
 
 #endif // GAME_H

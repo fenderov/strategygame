@@ -3,10 +3,11 @@
 
 UnitFactory::UnitFactory()
 {
-
+    _isanyorder = false;
 }
 
 Unit* UnitFactory::UnitCreationTick(){
+    if(!_isanyorder) return nullptr;
     --_unitbuildingtimer;
     if(_unitbuildingtimer == 0){
         switch(_unittype){
@@ -20,11 +21,13 @@ Unit* UnitFactory::UnitCreationTick(){
             return nullptr;
         }
         _unittype = UnitType::UnitTypeNull;
+        _isanyorder = false;
     }
     return nullptr;
 }
 
 void UnitFactory::UnitCreationOrder(UnitType type){
+    _isanyorder = true;
     _unittype = type;
     switch(_unittype){
     case UnitType::ArcherType:

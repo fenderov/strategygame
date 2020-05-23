@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "source/game.h"
+#include "network.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Client; }
@@ -17,6 +18,12 @@ public:
     ~Client();
 
 private:
+    Game* _game;
     Ui::Client *ui;
+
+private slots:
+    void StartNetworkGame(QTcpSocket* socket);
+    void StartLocalGame();
+    void ConnectNetworkGame();
 };
 #endif // CLIENT_H
